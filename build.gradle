@@ -38,8 +38,21 @@ tasks.named('processResources', ProcessResources).configure {
 }
 
 repositories {
-    // Repositório para Cloth Config
-    maven { url "https://maven.shedaniel.me/" }
+    // Modrinth Maven for Better Combat and First Person Model
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    // KosmX's Maven for Player Animation Lib
+    maven {
+        name = "KosmX"
+        url = "https://maven.kosmx.dev/"
+    }
+    // Shedaniel's Maven for Cloth Config
+    maven {
+        name = "Shedaniel"
+        url = "https://maven.shedaniel.me/"
+    }
 }
 
 base {
@@ -96,12 +109,15 @@ configurations {
 }
 
 dependencies {
-    // Usamos implementation para que as classes fiquem disponíveis no IDE e no ambiente de teste (runClient).
-    // O NeoForge não incluirá estes JARs dentro do seu JAR final, então não há duplicação.
-    implementation files("libs/bettercombat-neoforge-2.3.2+1.21.1.jar")
-    implementation files("libs/firstperson-neoforge-2.7.1-mc1.21.1.jar")
-    implementation files("libs/player-animation-lib-forge-2.0.4+1.21.1.jar")
-    implementation files("libs/cloth-config-15.0.140-neoforge.jar")
+    // Official Maven dependencies (Replacing local libs for CI/CD compatibility)
+    implementation "maven.modrinth:better-combat:2.3.2+1.21.1-neoforge"
+    implementation "maven.modrinth:first-person-model:2.7.1-neoforge"
+    implementation "dev.kosmx.player-anim:player-animation-lib-forge:2.0.4+1.21.1"
+    implementation "me.shedaniel.cloth:cloth-config-neoforge:15.0.140"
+    
+    // Spell Engine & Combat Roll (Optional Integrations)
+//    implementation "maven.modrinth:spell-engine:1.9.9+1.21.1-neoforge"
+    implementation "maven.modrinth:combat-roll:2.0.6+1.21.1-neoforge"
 }
 
 publishing {

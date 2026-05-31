@@ -1,4 +1,4 @@
-# FPM x Better Combat Fix (NeoForge 1.21.1)
+# FPM x Better Combat Compatibility (NeoForge 1.21.1)
 
 A technical compatibility mod designed to fix rendering alignment issues when using **First Person Model (FPM)** alongside **Better Combat**, **Spell Engine**, and **Combat Roll**.
 
@@ -45,21 +45,13 @@ Contributions are highly welcome! Whether it's a bug fix, a new mod integration,
 <summary><b>🛠 Technical Setup & Build Instructions</b></summary>
 
 ### Prerequisites
-To build the project, you must manually place the following mod dependencies into the `libs/` directory in the project root. These are required for compilation and testing.
-
-| Mod | Required JAR File (example version) |
-| :--- | :--- |
-| **Better Combat** | `bettercombat-neoforge-2.3.2+1.21.1.jar` |
-| **First Person Model** | `firstperson-neoforge-2.7.1-mc1.21.1.jar` |
-| **Player Animation Lib** | `player-animation-lib-forge-2.0.4+1.21.1.jar` |
-| **Cloth Config** | `cloth-config-15.0.140-neoforge.jar` |
-| **Not Enough Animations** | `notenoughanimations-neoforge-1.12.3-mc1.21.1.jar` |
+*   Java 21 JDK
+*   Git
 
 ### Setting up the Workspace
-1.  Clone the repository.
-2.  Place the JARs listed above into the `libs/` folder.
-3.  Run `./gradlew genIntellijRuns` (or the equivalent for your IDE).
-4.  Refresh/Import the Gradle project in your IDE.
+1.  Clone the repository: `git clone https://github.com/twk0d/firstpersonmodel-bettercombat-compat.git`
+2.  Import the project into your preferred IDE (IntelliJ IDEA or VS Code) as a Gradle project.
+3.  Dependencies (Better Combat, FPM, etc.) are handled automatically via Maven repositories (Modrinth, KosmX, Shedaniel).
 
 ### Building the Mod
 To generate the final mod JAR, run:
