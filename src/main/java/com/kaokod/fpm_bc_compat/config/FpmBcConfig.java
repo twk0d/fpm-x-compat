@@ -49,7 +49,7 @@ public class FpmBcConfig {
             builder.pop();
 
             builder.push("Right Arm Settings");
-            rightArmPitchMultiplier = builder.defineInRange("rightArmPitchMultiplier", 0.8, -5.0, 5.0);
+            rightArmPitchMultiplier = builder.defineInRange("rightArmPitchMultiplier", 0.7, -5.0, 5.0);
             rightArmPitchOffset = builder.defineInRange("rightArmPitchOffset", 0.15, -3.14, 3.14);
             rightArmPitchCurve = builder.defineInRange("rightArmPitchCurve", 0.0, 0.0, 5.0);
             rightArmPitchCurveFloor = builder.defineInRange("rightArmPitchCurveFloor", 0.75, 0.0, 1.0);
@@ -63,7 +63,7 @@ public class FpmBcConfig {
             builder.pop();
 
             builder.push("Left Arm Settings");
-            leftArmPitchMultiplier = builder.defineInRange("leftArmPitchMultiplier", 0.8, -5.0, 5.0);
+            leftArmPitchMultiplier = builder.defineInRange("leftArmPitchMultiplier", 0.7, -5.0, 5.0);
             leftArmPitchOffset = builder.defineInRange("leftArmPitchOffset", 0.15, -3.14, 3.14);
             leftArmPitchCurve = builder.defineInRange("leftArmPitchCurve", 0.0, 0.0, 5.0);
             leftArmPitchCurveFloor = builder.defineInRange("leftArmPitchCurveFloor", 0.75, 0.0, 1.0);

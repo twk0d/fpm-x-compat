@@ -78,3 +78,11 @@ versionRange = "${mod_wildcard_version}"
 ordering = "AFTER"
 side = "CLIENT"
 reason = "Optional integration to prevent visual glitches during rolls."
+
+[[dependencies.fpm_bc_compat]]
+modId = "accessories"
+type = "optional"
+versionRange = "${mod_wildcard_version}"
+ordering = "AFTER"
+side = "CLIENT"
+reason = "Optional integration to hide head accessories in first-person."

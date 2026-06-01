@@ -42,6 +42,9 @@ repositories {
     maven {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
     }
     // KosmX's Maven for Player Animation Lib
     maven {
@@ -52,6 +55,11 @@ repositories {
     maven {
         name = "Shedaniel"
         url = "https://maven.shedaniel.me/"
+    }
+    // Wispforest Maven for Accessories
+    maven {
+        name = "Wispforest"
+        url = "https://maven.wispforest.io/releases"
     }
 }
 
@@ -109,16 +117,46 @@ configurations {
 }
 
 dependencies {
-    // Official Maven dependencies (Replacing local libs for CI/CD compatibility)
-    implementation "maven.modrinth:better-combat:2.3.2+1.21.1-neoforge"
-    implementation "maven.modrinth:first-person-model:2.7.1-neoforge"
-    implementation "dev.kosmx.player-anim:player-animation-lib-forge:2.0.4+1.21.1"
+    //Mod Dependencies
+        // Configuration
     implementation "me.shedaniel.cloth:cloth-config-neoforge:15.0.140"
-    
-    // Spell Engine & Combat Roll (Optional Integrations)
-//    implementation "maven.modrinth:spell-engine:1.9.9+1.21.1-neoforge"
+
+    //Integrations
+        // First Person Model
+    implementation "maven.modrinth:first-person-model:2.7.1-neoforge,1.21.1"
+
+        // Better Combat
+    implementation "maven.modrinth:better-combat:2.3.2+1.21.1-neoforge"
+    implementation "maven.modrinth:playeranimator:2.0.4+1.21.1-forge"
+
+        // Spell Engine
+    implementation "maven.modrinth:forgified-fabric-api:0.116.7+2.2.4+1.21.1-neoforge,1.21.1"
+    implementation "maven.modrinth:spell-engine:1.9.9+1.21.1-neoforge"
+    implementation "maven.modrinth:spell-power:1.4.6+1.21.1-neoforge"
+
+        // Combat Roll
     implementation "maven.modrinth:combat-roll:2.0.6+1.21.1-neoforge"
+
+        // Curios
+    implementation "maven.modrinth:curios:9.5.1+1.21.1-neoforge"
+
+        // Accessories
+    implementation "maven.modrinth:owo-lib:0.12.15.5-beta.1+1.21-neoforge"
+    implementation "maven.modrinth:accessories:1.1.0-beta.53+1.21.1-neoforge"
+    implementation "maven.modrinth:accessories-compat-layer:0.1.12-neoforge"
+
+        // Not Enough Animations
+    implementation "maven.modrinth:not-enough-animations:1.12.3-neoforge,1.21.1"
+
+        // Entity X Features
+    implementation "maven.modrinth:entity-model-features:3.2.4-neoforge-1.21"
+    implementation "maven.modrinth:entitytexturefeatures:7.1-neoforge-1.21"
+    implementation "maven.modrinth:esf:0.8.1-neoforge-1.21"
+
+        // Artifaces for curios testing
+    implementation "maven.modrinth:artifacts:13.2.1-neoforge,1.21.1"
 }
+
 
 publishing {
     publications {
@@ -135,6 +173,37 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+tasks.register('downloadResourcePacks') {
+    description = 'Downloads required resource packs for testing.'
+    group = 'build setup'
+
+    doLast {
+        def packs = [
+            "FreshMoves.zip": "https://cdn.modrinth.com/data/slufHzC2/versions/4uyHvhnf/-1.21.2%20Fresh%20Moves%20v3.1%20%28With%20Animated%20Eyes%29.zip?mr_download_reason=standalone&mr_game_version=1.21.1"
+        ]
+        def packDir = file("run/resourcepacks")
+        if (!packDir.exists()) packDir.mkdirs()
+
+        packs.each { fileName, url ->
+            def destFile = file("${packDir}/${fileName}")
+            if (!destFile.exists()) {
+                println "Downloading resource pack: ${fileName}..."
+                try {
+                    new URL(url).withInputStream { i -> destFile.withOutputStream { it << i } }
+                    println "Download complete: ${fileName}"
+                } catch (Exception e) {
+                    println "Failed to download ${fileName}: ${e.message}"
+                }
+            }
+        }
+    }
+}
+
+// Automatically download packs whenever runClient is executed
+tasks.named('runClient').configure {
+    dependsOn 'downloadResourcePacks'
 }
 
 idea {

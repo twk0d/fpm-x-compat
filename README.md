@@ -27,12 +27,13 @@ We want to ensure that FPM works seamlessly with every major gameplay and animat
 
 ## 🛠 Project Roadmap & Planning
 
-| Priority   | Task                                                             | Status              |
-|:-----------|:-----------------------------------------------------------------|:--------------------|
-| **High**   | Multi-language support (I18n)                                    | ⏳ To Do             |
-| **Medium** | Port to Fabric/Quilt                                             | 🔍 Under Review     |
-| **Low**    | Custom animation profiles per weapon type                        | 💡 Planned          |
-| **Low**    | Portability to other versions                                    | 💡 Planned          |
+| Priority   | Task                                      | Status              |
+|:-----------|:------------------------------------------|:--------------------|
+| **High**   | Multi-language support (I18n)             | ⏳ To Do             |
+| **Medium** | Port to Fabric/Quilt                      | 🔍 Under Review     |
+| **Medium** | Compatibility with EMF with Fresh Moves   | 🔍 Under Review     |
+| **Low**    | Custom animation profiles per weapon type | 💡 Planned          |
+| **Low**    | Portability to other versions             | 💡 Planned          |
 
 ---
 

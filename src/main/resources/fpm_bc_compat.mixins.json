@@ -5,7 +5,8 @@
   "client": [
     "PlayerAnimationProcessorMixin",
     "FirstPersonLogicHandlerMixin",
-    "PlayerAnimationApplierMixin"
+    "PlayerAnimationApplierMixin",
+    "AccessoriesHeadHideMixin"
   ],
   "injectors": {
     "defaultRequire": 1
