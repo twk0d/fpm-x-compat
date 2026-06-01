@@ -6,6 +6,8 @@ package com.kaokod.fpm_bc_compat.util;
  */
 public class KinematicsUtil {
 
+    private static final float HALF_PI = (float) (Math.PI / 2.0);
+
     /**
      * Clamps the camera pitch to avoid mathematical singularities at exactly 90 degrees.
      * 1.56731 radians is approximately 89.8 degrees.
@@ -17,35 +19,39 @@ public class KinematicsUtil {
     /**
      * Calculates a non-linear rotation factor based on the camera pitch.
      * Uses a cosine curve to slow down rotation at extreme vertical angles.
-     * 
-     * @param pitch Radians of the current camera look angle.
-     * @param power The aggressiveness of the curve (from config).
-     * @param floor The minimum multiplier at 90 degrees (from config).
-     * @return A factor between [floor] and 1.0.
      */
     public static float calculateTrigCurveFactor(float pitch, float power, float floor) {
         float baseCurve = (float) Math.pow(Math.cos(pitch), power);
-        // Remap from [0, 1] to [floor, 1]
         return baseCurve * (1.0f - floor) + floor;
     }
 
     /**
      * Linearly interpolates (Lerp) a value towards a target.
-     * Used for smooth transitions between upper and lower vision biases.
      */
     public static float lerp(float current, float target, float speed) {
         return current + (target - current) * speed;
     }
 
     /**
-     * Combines multiple factors to calculate the final rotation offset for an arm.
+     * Calculates dynamic depth (Z) based on how much the player is looking UP.
+     * Scales linearly from 0 at the horizon to the full [lookUpZShift] at -90 degrees.
      * 
-     * @param pitch Clamped camera pitch in radians.
-     * @param multiplier Configured multiplier.
-     * @param curveFactor Calculated trig curve factor.
-     * @param fixedOffset Base offset.
-     * @param activeBias Smoothed directional bias.
-     * @return Total rotation adjustment on the X axis.
+     * @param pitch Radians of the current camera look angle.
+     * @param baseZ Initial depth offset from config.
+     * @param lookUpZShift Maximum extra depth to apply at -90 degrees.
+     * @return The dynamic Z coordinate.
+     */
+    public static float calculateDynamicZOffset(float pitch, float baseZ, float lookUpZShift) {
+        // We only care about looking UP (negative pitch)
+        if (pitch >= 0) return baseZ;
+        
+        // Scale factor: 0.0 at horizon, 1.0 at -90 degrees
+        float scale = Math.abs(pitch) / HALF_PI;
+        return baseZ + (lookUpZShift * scale);
+    }
+
+    /**
+     * Combines multiple factors to calculate the final rotation offset for an arm.
      */
     public static float calculateFinalArmRotationX(float pitch, float multiplier, float curveFactor, float fixedOffset, float activeBias) {
         return (pitch * multiplier * curveFactor) + fixedOffset + activeBias;

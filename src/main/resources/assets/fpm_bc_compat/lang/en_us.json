@@ -33,5 +33,7 @@
 
   "fpm_bc_compat.config.pos_x": "Horizontal Offset (X)",
   "fpm_bc_compat.config.pos_y": "Vertical Offset (Y)",
-  "fpm_bc_compat.config.pos_z": "Depth Offset (Z)"
+  "fpm_bc_compat.config.pos_z": "Depth Offset (Z)",
+  "fpm_bc_compat.config.lookup_z_shift": "Look UP Dynamic Z-Shift",
+  "fpm_bc_compat.config.lookup_z_shift.tooltip": "Automatically pushes the arm forward when looking up to prevent camera clipping. Default 3.1 ensures full visibility at -90 degrees."
 }

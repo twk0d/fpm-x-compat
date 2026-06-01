@@ -8,7 +8,7 @@ Initially born to bridge the gap within the **Better Combat** ecosystem, this pr
 We want to ensure that FPM works seamlessly with every major gameplay and animation mod in the Minecraft community. While our current focus is maintaining absolute stability for our existing integrations, we are eager to expand our horizons.
 
 > **Have a mod you want to see integrated?**  
-> Please [open an Issue](https://github.com/kaokod/firstpersonmodel-bettercombat-compat/issues) and tell us which mod integration you're looking for! We will evaluate and work on bringing it to life.
+> Please [open an Issue](https://github.com/twk0d/firstpersonmodel-bettercombat-compat/issues) and tell us which mod integration you're looking for! We will evaluate and work on bringing it to life.
 
 ## Key Features
 *   **Kinematic Alignment:** Automatically syncs arm rotation with camera pitch during attacks.
@@ -27,14 +27,12 @@ We want to ensure that FPM works seamlessly with every major gameplay and animat
 
 ## 🛠 Project Roadmap & Planning
 
-| Priority   | Task                                      | Status              |
-|:-----------|:------------------------------------------|:--------------------|
-| **High**   | Multi-language support (I18n)             | ⏳ To Do             |
-| **Medium** | Port to Fabric/Quilt                      | 🔍 Under Review     |
-| **Medium** | Math Optimization / Camera Smoothness     | 🔍 Looking for Help |
-| **Medium** | Arms better placement                     | 🔍 Looking for Help |
-| **Low**    | Custom animation profiles per weapon type | 💡 Planned          |
-| **Low**    | Portability to other versions             | 💡 Planned          |
+| Priority   | Task                                                             | Status              |
+|:-----------|:-----------------------------------------------------------------|:--------------------|
+| **High**   | Multi-language support (I18n)                                    | ⏳ To Do             |
+| **Medium** | Port to Fabric/Quilt                                             | 🔍 Under Review     |
+| **Low**    | Custom animation profiles per weapon type                        | 💡 Planned          |
+| **Low**    | Portability to other versions                                    | 💡 Planned          |
 
 ---
 

@@ -1,7 +1,6 @@
 package com.kaokod.fpm_bc_compat.mixin;
 
 import com.kaokod.fpm_bc_compat.AttackStateManager;
-import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -9,7 +8,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Mixin targeting First Person Model's logic handler.
- * Prevents the mod from rotating the player's body or hiding parts when an attack is in progress.
+ * Prevents the mod from rotating the player's body during an attack.
+ * 
+ * Note: Pitch visibility overrides were removed to allow FPM to natively 
+ * handle head/overlay visibility when looking down, preventing clipping issues.
  */
 @Mixin(targets = "dev.tr7zw.firstperson.LogicHandler", remap = false)
 public class FirstPersonLogicHandlerMixin {
@@ -21,27 +23,6 @@ public class FirstPersonLogicHandlerMixin {
    private static void suppressBodyYawDuringAttack(float partialTicks, float bodyYaw, CallbackInfoReturnable<Float> returnableInfo) {
       if (AttackStateManager.isPlayerInAttackState()) {
          returnableInfo.setReturnValue(0.0F);
-      }
-   }
-
-   /**
-    * Forces the "looking down" state to false during attacks.
-    * This prevents FPM from hiding the character's body when the player aims downwards while swinging.
-    */
-   @Inject(method = "lookingDown()Z", at = @At("HEAD"), cancellable = true)
-   private void forcePitchVisibility(CallbackInfoReturnable<Boolean> returnableInfo) {
-      if (AttackStateManager.isPlayerInAttackState()) {
-         returnableInfo.setReturnValue(false);
-      }
-   }
-
-   /**
-    * Overloaded variant of lookingDown for specific entity checks.
-    */
-   @Inject(method = "lookingDown(Lnet/minecraft/world/entity/LivingEntity;)Z", at = @At("HEAD"), cancellable = true)
-   private void forcePitchVisibilityWithEntity(LivingEntity livingEntity, CallbackInfoReturnable<Boolean> returnableInfo) {
-      if (AttackStateManager.isPlayerInAttackState()) {
-         returnableInfo.setReturnValue(false);
       }
    }
 }

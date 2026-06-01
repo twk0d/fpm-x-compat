@@ -24,6 +24,7 @@ public class FpmBcConfig {
         public final ModConfigSpec.DoubleValue rightArmPositionXOffset;
         public final ModConfigSpec.DoubleValue rightArmPositionYOffset;
         public final ModConfigSpec.DoubleValue rightArmPositionZOffset;
+        public final ModConfigSpec.DoubleValue rightArmLookUpZShift;
 
         // --- Left Arm Spec ---
         public final ModConfigSpec.DoubleValue leftArmPitchMultiplier;
@@ -35,6 +36,7 @@ public class FpmBcConfig {
         public final ModConfigSpec.DoubleValue leftArmPositionXOffset;
         public final ModConfigSpec.DoubleValue leftArmPositionYOffset;
         public final ModConfigSpec.DoubleValue leftArmPositionZOffset;
+        public final ModConfigSpec.DoubleValue leftArmLookUpZShift;
 
         // --- Global Spec ---
         public final ModConfigSpec.DoubleValue biasSmoothingSpeed;
@@ -42,38 +44,36 @@ public class FpmBcConfig {
 
         public Client(ModConfigSpec.Builder builder) {
             builder.push("Global Animation Settings");
-            
-            bodyYOffset = builder
-                    .comment("Vertical offset of the body when the player is crouching.")
-                    .defineInRange("bodyYOffset", -0.1, -1.0, 1.0);
-            
-            biasSmoothingSpeed = builder
-                    .comment("Speed of the bias transition (0.01 to 1.0). Smaller values are smoother/slower.")
-                    .defineInRange("biasSmoothingSpeed", 0.1, 0.01, 1.0);
+            bodyYOffset = builder.defineInRange("bodyYOffset", -0.1, -1.0, 1.0);
+            biasSmoothingSpeed = builder.defineInRange("biasSmoothingSpeed", 0.1, 0.01, 1.0);
             builder.pop();
 
             builder.push("Right Arm Settings");
-            rightArmPitchMultiplier = builder.comment("Multiplier for camera pitch applied to the RIGHT arm.").defineInRange("rightArmPitchMultiplier", 0.8, -5.0, 5.0);
-            rightArmPitchOffset = builder.comment("Fixed rotation offset (Pitch) for the RIGHT arm.").defineInRange("rightArmPitchOffset", 0.05, -3.14, 3.14);
-            rightArmPitchCurve = builder.comment("Trigonometric curve intensity. Values > 0 smooth out rotation at extreme angles.").defineInRange("rightArmPitchCurve", 0.1, 0.0, 5.0);
-            rightArmPitchCurveFloor = builder.comment("Minimum rotation factor at 90 degrees to prevent the weapon from vanishing.").defineInRange("rightArmPitchCurveFloor", 0.75, 0.0, 1.0);
-            rightArmUpperPitchBias = builder.comment("Additional rotation applied ONLY when looking at the sky.").defineInRange("rightArmUpperPitchBias", 0.1, -3.14, 3.14);
-            rightArmLowerPitchBias = builder.comment("Additional rotation applied ONLY when looking at the ground.").defineInRange("rightArmLowerPitchBias", 0.1, -3.14, 3.14);
-            rightArmPositionXOffset = builder.comment("Horizontal (X) position offset for the RIGHT arm.").defineInRange("rightArmPositionXOffset", -3.0, -10.0, 10.0);
-            rightArmPositionYOffset = builder.comment("Vertical (Y) position offset for the RIGHT arm.").defineInRange("rightArmPositionYOffset", 1.0, -10.0, 10.0);
-            rightArmPositionZOffset = builder.comment("Depth (Z) position offset for the RIGHT arm.").defineInRange("rightArmPositionZOffset", 0.5, -10.0, 10.0);
+            rightArmPitchMultiplier = builder.defineInRange("rightArmPitchMultiplier", 0.8, -5.0, 5.0);
+            rightArmPitchOffset = builder.defineInRange("rightArmPitchOffset", 0.15, -3.14, 3.14);
+            rightArmPitchCurve = builder.defineInRange("rightArmPitchCurve", 0.0, 0.0, 5.0);
+            rightArmPitchCurveFloor = builder.defineInRange("rightArmPitchCurveFloor", 0.75, 0.0, 1.0);
+            rightArmUpperPitchBias = builder.defineInRange("rightArmUpperPitchBias", 0.1, -3.14, 3.14);
+            rightArmLowerPitchBias = builder.defineInRange("rightArmLowerPitchBias", 0.1, -3.14, 3.14);
+            
+            rightArmPositionXOffset = builder.defineInRange("rightArmPositionXOffset", 0.0, -10.0, 10.0);
+            rightArmPositionYOffset = builder.defineInRange("rightArmPositionYOffset", 0.2, -10.0, 10.0);
+            rightArmPositionZOffset = builder.defineInRange("rightArmPositionZOffset", 2.0, -10.0, 10.0);
+            rightArmLookUpZShift = builder.defineInRange("rightArmLookUpZShift", 2.0, 0.0, 10.0);
             builder.pop();
 
             builder.push("Left Arm Settings");
             leftArmPitchMultiplier = builder.defineInRange("leftArmPitchMultiplier", 0.8, -5.0, 5.0);
-            leftArmPitchOffset = builder.defineInRange("leftArmPitchOffset", 0.05, -3.14, 3.14);
-            leftArmPitchCurve = builder.defineInRange("leftArmPitchCurve", 0.1, 0.0, 5.0);
+            leftArmPitchOffset = builder.defineInRange("leftArmPitchOffset", 0.15, -3.14, 3.14);
+            leftArmPitchCurve = builder.defineInRange("leftArmPitchCurve", 0.0, 0.0, 5.0);
             leftArmPitchCurveFloor = builder.defineInRange("leftArmPitchCurveFloor", 0.75, 0.0, 1.0);
             leftArmUpperPitchBias = builder.defineInRange("leftArmUpperPitchBias", 0.1, -3.14, 3.14);
             leftArmLowerPitchBias = builder.defineInRange("leftArmLowerPitchBias", 0.1, -3.14, 3.14);
-            leftArmPositionXOffset = builder.defineInRange("leftArmPositionXOffset", 3.0, -10.0, 10.0);
-            leftArmPositionYOffset = builder.defineInRange("leftArmPositionYOffset", 1.0, -10.0, 10.0);
-            leftArmPositionZOffset = builder.defineInRange("leftArmPositionZOffset", 0.5, -10.0, 10.0);
+            
+            leftArmPositionXOffset = builder.defineInRange("leftArmPositionXOffset", 0.0, -10.0, 10.0);
+            leftArmPositionYOffset = builder.defineInRange("leftArmPositionYOffset", 0.2, -10.0, 10.0);
+            leftArmPositionZOffset = builder.defineInRange("leftArmPositionZOffset", 2.0, -10.0, 10.0);
+            leftArmLookUpZShift = builder.defineInRange("leftArmLookUpZShift", 2.0, 0.0, 10.0);
             builder.pop();
         }
     }
