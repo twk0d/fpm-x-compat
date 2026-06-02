@@ -14,7 +14,7 @@ public class SpellEngineCompat {
 
     private static Method SPELL_CASTING_VALIDATOR_METHOD = null;
 
-    private static void initializeReflection() {
+    public static void init() {
         if (isInitialized) return;
         isInitialized = true;
 
@@ -23,25 +23,32 @@ public class SpellEngineCompat {
             SPELL_CASTING_VALIDATOR_METHOD = spellCasterEntityClass.getMethod("isCastingSpell");
 
             isModAvailable = true;
+            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Spell Engine integration established.");
         } catch (Exception e) {
             isModAvailable = false;
+            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Spell Engine not detected, skipping integration.");
         }
+    }
+
+    private static void initializeReflection() {
+        init();
     }
 
     /**
      * Checks if the player is in the middle of casting a spell.
      */
-    public static boolean isPlayerCasting() {
+    public static boolean isPlayerCasting(net.minecraft.world.entity.player.Player player) {
         initializeReflection();
-        if (!isModAvailable) return false;
+        if (!isModAvailable || player == null) return false;
 
         try {
-            LocalPlayer player = MinecraftPlayerUtil.getClientPlayer();
-            if (player == null) return false;
-
             return (Boolean) SPELL_CASTING_VALIDATOR_METHOD.invoke(player);
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static boolean isPlayerCasting() {
+        return isPlayerCasting(MinecraftPlayerUtil.getClientPlayer());
     }
 }

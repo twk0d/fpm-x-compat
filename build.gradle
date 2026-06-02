@@ -153,8 +153,12 @@ dependencies {
     implementation "maven.modrinth:entitytexturefeatures:7.1-neoforge-1.21"
     implementation "maven.modrinth:esf:0.8.1-neoforge-1.21"
 
-        // Artifaces for curios testing
+        // Artifacts and relics for curios testing
     implementation "maven.modrinth:artifacts:13.2.1-neoforge,1.21.1"
+    implementation "maven.modrinth:architectury-api:13.0.8+neoforge"
+    implementation "maven.modrinth:octo-lib:0.6.2-neoforge,1.21.1"
+    implementation "maven.modrinth:relics-mod:0.12.8-neoforge,1.21.1"
+    implementation "maven.modrinth:reliquified-artifacts:1.0.6-neoforge,1.21.1"
 }
 
 

@@ -1,5 +1,14 @@
 # Changelog
 
+# 0.0.4
+- Integrated with Entity Model Features (EMF).
+- Implemented a dynamic pause condition for EMF animations during combat actions (attack/roll).
+- Broadened model part detection to handle both camelCase and snake_case naming conventions.
+- Refactored Better Combat, Spell Engine, and Combat Roll bridges for universal player entity support.
+- Optimized state detection logic to improve reliability across all rendered player models.
+- Enhanced logging system with a structured startup banner and unified diagnostic prefixes (`[Bridge]`, `[Lifecycle]`).
+- Implemented explicit initialization for all compatibility bridges to provide immediate feedback on mod detection.
+
 # 0.0.3
 - Compatibility with Accessories mod (Curious and Accessories head items).
 - Dependency update to NeoForge 1.21.1 using Modrinth Maven repositories.

@@ -15,7 +15,7 @@ public class FirstPersonModelCompat {
     /**
      * Initializes reflection handles for First Person Model API.
      */
-    private static void initializeReflection() {
+    public static void init() {
         if (isInitialized) return;
         isInitialized = true;
 
@@ -25,9 +25,15 @@ public class FirstPersonModelCompat {
             RENDER_STATE_VALIDATOR = firstPersonApiClass.getMethod("isRenderingPlayer");
 
             isModAvailable = true;
+            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] First Person Model integration established.");
         } catch (Exception e) {
             isModAvailable = false;
+            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] First Person Model not detected, skipping integration.");
         }
+    }
+
+    private static void initializeReflection() {
+        init();
     }
 
     /**

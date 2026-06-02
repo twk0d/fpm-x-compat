@@ -20,6 +20,13 @@ public class FpmBcCompatMod {
      * ModContainer and IEventBus are automatically injected by the loader.
      */
     public FpmBcCompatMod(ModContainer container, IEventBus modEventBus) {
+        MOD_LOGGER.info("***************************************************");
+        MOD_LOGGER.info("* FPM x Better Combat Compatibility - version 0.0.4 *");
+        MOD_LOGGER.info("* Developed by Kaokod                              *");
+        MOD_LOGGER.info("***************************************************");
+        MOD_LOGGER.info("Hi from Kaokod!");
+        MOD_LOGGER.info("Hyenas are not stinky :3");
+
         // Register client configuration file
         container.registerConfig(ModConfig.Type.CLIENT, FpmBcConfig.CLIENT_SPEC);
         
@@ -27,8 +34,13 @@ public class FpmBcCompatMod {
         container.registerExtensionPoint(IConfigScreenFactory.class, 
             (modContainer, parentScreen) -> FpmBcConfigScreen.create(parentScreen));
 
-        MOD_LOGGER.info("[First Person Model X Better Combat Fix] Initialized successfully.");
-        MOD_LOGGER.info("Hi from Kao!");
-        MOD_LOGGER.info("Hyenas are not stinky!");
+        // Initialize cross-mod compatibility bridges
+        MOD_LOGGER.info("[Lifecycle] Initializing compatibility bridges...");
+        com.kaokod.fpm_bc_compat.integration.BetterCombatCompat.init();
+        com.kaokod.fpm_bc_compat.integration.SpellEngineCompat.init();
+        com.kaokod.fpm_bc_compat.integration.CombatRollCompat.init();
+        com.kaokod.fpm_bc_compat.integration.FirstPersonModelCompat.init();
+        com.kaokod.fpm_bc_compat.integration.EmfCompat.init();
+        MOD_LOGGER.info("[Lifecycle] Mod initialization sequence complete.");
     }
 }

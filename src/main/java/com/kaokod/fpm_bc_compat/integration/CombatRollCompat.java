@@ -15,7 +15,7 @@ public class CombatRollCompat {
     private static Method RESOLVE_ROLL_MANAGER_INSTANCE = null;
     private static Method CHECK_PLAYER_ROLLING_STATE = null;
 
-    private static void initializeReflection() {
+    public static void init() {
         if (isInitialized) return;
         isInitialized = true;
 
@@ -27,22 +27,25 @@ public class CombatRollCompat {
             CHECK_PLAYER_ROLLING_STATE = rollManagerClass.getMethod("isRolling");
 
             isModAvailable = true;
+            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll integration established.");
         } catch (Exception e) {
             isModAvailable = false;
+            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll not detected, skipping integration.");
         }
+    }
+
+    private static void initializeReflection() {
+        init();
     }
 
     /**
      * Returns true if the player is currently performing a roll animation.
      */
-    public static boolean isPlayerRolling() {
+    public static boolean isPlayerRolling(net.minecraft.world.entity.player.Player player) {
         initializeReflection();
-        if (!isModAvailable) return false;
+        if (!isModAvailable || player == null) return false;
 
         try {
-            LocalPlayer player = MinecraftPlayerUtil.getClientPlayer();
-            if (player == null) return false;
-
             Object rollManagerInstance = RESOLVE_ROLL_MANAGER_INSTANCE.invoke(player);
             if (rollManagerInstance == null) return false;
 
@@ -50,5 +53,9 @@ public class CombatRollCompat {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static boolean isPlayerRolling() {
+        return isPlayerRolling(MinecraftPlayerUtil.getClientPlayer());
     }
 }

@@ -38,14 +38,14 @@ public class PlayerAnimationProcessorMixin {
           handleBodyTransformation(transformType, returnableInfo);
       }
 
-      boolean isRightArm = "rightArm".equals(modelPartName);
-      boolean isLeftArm = "leftArm".equals(modelPartName);
+      boolean isRightArm = "rightArm".equals(modelPartName) || "right_arm".equals(modelPartName);
+      boolean isLeftArm = "leftArm".equals(modelPartName) || "left_arm".equals(modelPartName);
 
       if (isRightArm || isLeftArm) {
           handleArmTransformation(isRightArm, transformType, currentTransform, returnableInfo);
       }
 
-      if (("rightLeg".equals(modelPartName) || "leftLeg".equals(modelPartName)) && transformType == TransformType.ROTATION) {
+      if (("rightLeg".equals(modelPartName) || "right_leg".equals(modelPartName) || "leftLeg".equals(modelPartName) || "left_leg".equals(modelPartName)) && transformType == TransformType.ROTATION) {
           handleLegRotation(returnableInfo, currentTransform);
       }
    }

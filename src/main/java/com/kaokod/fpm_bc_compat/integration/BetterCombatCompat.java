@@ -20,10 +20,10 @@ public class BetterCombatCompat {
     private static Method LAYER_ACTIVITY_CHECK_METHOD = null;
 
     /**
-     * Lazily initializes reflection handles for Better Combat.
+     * Initializes reflection handles for Better Combat.
      * Prevents classloading issues if the mod is not installed.
      */
-    private static void initializeReflection() {
+    public static void init() {
         if (isInitialized) return;
         isInitialized = true;
 
@@ -39,22 +39,25 @@ public class BetterCombatCompat {
             LAYER_ACTIVITY_CHECK_METHOD = modifierLayerClass.getMethod("isActive");
 
             isModAvailable = true;
+            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Better Combat integration established.");
         } catch (Exception e) {
             isModAvailable = false;
+            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Better Combat not detected, skipping integration.");
         }
     }
 
+    private static void initializeReflection() {
+        init();
+    }
+
     /**
-     * Checks if the Better Combat mod is performing an attack animation for the local player.
+     * Checks if the Better Combat mod is performing an attack animation for the given player.
      */
-    public static boolean isPlayerAttacking() {
+    public static boolean isPlayerAttacking(net.minecraft.world.entity.player.Player player) {
         initializeReflection();
-        if (!isModAvailable) return false;
+        if (!isModAvailable || player == null) return false;
 
         try {
-            LocalPlayer player = MinecraftPlayerUtil.getClientPlayer();
-            if (player == null) return false;
-
             Object attackAnimationInstance = INTERNAL_ATTACK_ANIM_FIELD.get(player);
             if (attackAnimationInstance == null) return false;
 
@@ -65,5 +68,9 @@ public class BetterCombatCompat {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static boolean isPlayerAttacking() {
+        return isPlayerAttacking(MinecraftPlayerUtil.getClientPlayer());
     }
 }

@@ -20,19 +20,36 @@ public class AttackStateManager {
         if (!FirstPersonModelCompat.isRenderingPlayerBody()) {
             return false;
         }
-        return BetterCombatCompat.isPlayerAttacking() || SpellEngineCompat.isPlayerCasting();
+        return isPlayerInAttackState(com.kaokod.fpm_bc_compat.util.MinecraftPlayerUtil.getClientPlayer());
+    }
+
+    public static boolean isPlayerInAttackState(net.minecraft.world.entity.player.Player player) {
+        if (player == null) return false;
+        return BetterCombatCompat.isPlayerAttacking(player) || SpellEngineCompat.isPlayerCasting(player);
     }
 
     public static boolean isPlayerInRollState() {
-        return CombatRollCompat.isPlayerRolling();
+        return isPlayerInRollState(com.kaokod.fpm_bc_compat.util.MinecraftPlayerUtil.getClientPlayer());
+    }
+
+    public static boolean isPlayerInRollState(net.minecraft.world.entity.player.Player player) {
+        return CombatRollCompat.isPlayerRolling(player);
     }
 
     public static boolean isPlayerCrouching() {
         return MinecraftPlayerUtil.isPlayerCrouching();
     }
 
+    public static boolean isPlayerCrouching(net.minecraft.world.entity.player.Player player) {
+        return MinecraftPlayerUtil.isPlayerCrouching(player);
+    }
+
     public static boolean isPlayerMoving() {
         return MinecraftPlayerUtil.isPlayerInMotion();
+    }
+
+    public static boolean isPlayerMoving(net.minecraft.world.entity.player.Player player) {
+        return MinecraftPlayerUtil.isPlayerInMotion(player);
     }
 
     public static float getPlayerCameraPitchRadians() {

@@ -19,11 +19,14 @@ public class MinecraftPlayerUtil {
     }
 
     /**
-     * Checks if the client player is currently sneaking (crouching).
+     * Checks if the player is currently sneaking (crouching).
      */
-    public static boolean isPlayerCrouching() {
-        LocalPlayer player = getClientPlayer();
+    public static boolean isPlayerCrouching(net.minecraft.world.entity.player.Player player) {
         return player != null && player.isCrouching();
+    }
+
+    public static boolean isPlayerCrouching() {
+        return isPlayerCrouching(getClientPlayer());
     }
 
     /**
@@ -41,8 +44,7 @@ public class MinecraftPlayerUtil {
      * Determines if the player has significant horizontal velocity.
      * Used to prevent leg animation glitches during static attacks.
      */
-    public static boolean isPlayerInMotion() {
-        LocalPlayer player = getClientPlayer();
+    public static boolean isPlayerInMotion(net.minecraft.world.entity.player.Player player) {
         if (player == null) {
             return false;
         }
@@ -54,5 +56,9 @@ public class MinecraftPlayerUtil {
 
         // Horizontal velocity check with a small epsilon to ignore micro-movements
         return (movementDelta.x * movementDelta.x + movementDelta.z * movementDelta.z) > 1.0E-4;
+    }
+
+    public static boolean isPlayerInMotion() {
+        return isPlayerInMotion(getClientPlayer());
     }
 }
