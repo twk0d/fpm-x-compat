@@ -1,5 +1,11 @@
 # Changelog
 
+# 0.0.5
+- **Intelligent Head Hiding:** Added a context-aware visibility system that hides the local player's head and accessories in first-person (supporting custom EMF bone names) while keeping them fully visible for other players and in third-person view.
+- **Multiplayer Safety:** Refactored all rendering offsets (Torso Z-axis, leg stabilization) to apply exclusively to the local player in first-person, preventing visual glitches on other players.
+- **Enhanced Logging System:** Added a structured startup banner and unified diagnostic prefixes (`[Bridge]`, `[Lifecycle]`) for better troubleshooting.
+- **Improved Initialization:** Implemented explicit initialization for all compatibility bridges to provide immediate feedback on mod detection during startup.
+
 # 0.0.4
 - Integrated with Entity Model Features (EMF).
 - Implemented a dynamic pause condition for EMF animations during combat actions (attack/roll).

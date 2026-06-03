@@ -23,9 +23,10 @@ public class FpmBcCompatMod {
         MOD_LOGGER.info("***************************************************");
         MOD_LOGGER.info("* FPM x Better Combat Compatibility - version 0.0.4 *");
         MOD_LOGGER.info("* Developed by Kaokod                              *");
-        MOD_LOGGER.info("***************************************************");
         MOD_LOGGER.info("Hi from Kaokod!");
         MOD_LOGGER.info("Hyenas are not stinky :3");
+        MOD_LOGGER.info("***************************************************");
+
 
         // Register client configuration file
         container.registerConfig(ModConfig.Type.CLIENT, FpmBcConfig.CLIENT_SPEC);

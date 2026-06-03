@@ -21,11 +21,22 @@ public class PlayerAnimationApplierMixin {
     * This prevents the player's head and limbs from clipping incorrectly in first-person view.
     */
    @Inject(method = "updatePart", at = @At("TAIL"))
-   private void adjustCrouchRendering(String modelPartName, ModelPart modelPart, CallbackInfo callbackInfo) {
+   private void adjustPartRendering(String modelPartName, ModelPart modelPart, CallbackInfo callbackInfo) {
+      boolean isFirstPerson = com.kaokod.fpm_bc_compat.integration.FirstPersonModelCompat.isRenderingPlayerBody();
+
+      // Universal Head Hiding: Hide the head and hat parts ONLY for the local player in first-person.
+      // We use contains() to catch custom EMF parts (e.g., head_decoration, hat_layer).
+      if (isFirstPerson) {
+         String lowerName = modelPartName.toLowerCase();
+         if (lowerName.contains("head") || lowerName.contains("hat")) {
+            modelPart.visible = false;
+         }
+      }
+
       if (AttackStateManager.isPlayerInAttackState()) {
          if (AttackStateManager.isPlayerCrouching()) {
-            // Offset head upwards to maintain vision alignment
-            if ("head".equals(modelPartName)) {
+            // Offset head upwards to maintain vision alignment (only if it's visible)
+            if ("head".equals(modelPartName) && modelPart.visible) {
                modelPart.y += 1.5F;
             }
 
@@ -35,7 +46,7 @@ public class PlayerAnimationApplierMixin {
             }
 
             // Shift torso slightly forward/backward to align with the camera pivot
-            if ("torso".equals(modelPartName)) {
+            if ("torso".equals(modelPartName) && isFirstPerson) {
                modelPart.z += 0.15F;
             }
          }
