@@ -10,18 +10,20 @@ We want to ensure that FPM works seamlessly with every major gameplay and animat
 > **Have a mod you want to see integrated?**  
 > Please [open an Issue](https://github.com/twk0d/firstpersonmodel-bettercombat-compat/issues) and tell us which mod integration you're looking for! We will evaluate and work on bringing it to life.
 
+## 🤝 Compatible Mods
+This mod acts as a bridge, harmonizing the interactions between the following mods:
+*   **[First Person Model (FPM)](https://www.curseforge.com/minecraft/mc-mods/first-person-model)** - The core rendering engine.
+*   **[Better Combat](https://www.curseforge.com/minecraft/mc-mods/better-combat-by-ironfist)** - Dynamic attack animations.
+*   **[Entity Model Features (EMF)](https://www.curseforge.com/minecraft/mc-mods/entity-model-features)** - Custom player models and animations (e.g., *Fresh Moves*).
+*   **[Spell Engine](https://www.curseforge.com/minecraft/mc-mods/spell-engine)** - Casting and magic animations.
+*   **[Combat Roll](https://www.curseforge.com/minecraft/mc-mods/combat-roll)** - Evasion and rolling maneuvers.
+*   **[Accessories](https://www.curseforge.com/minecraft/mc-mods/accessories)** - Proper hiding of head-related accessories in first-person.
+
 ## Key Features
 *   **Kinematic Alignment:** Automatically syncs arm rotation with camera pitch during attacks.
+*   **Intelligent Head Hiding:** Dynamically hides the local player's head and accessories in first-person (including EMF custom models) while maintaining full visibility for other players.
+*   **EMF Synchronization:** Pauses custom EMF animations during combat to ensure kinematic offsets take priority.
 *   **Dynamic Configuration:** Real-time adjustment of offsets via an in-game menu (Powered by Cloth Config).
-*   **Individual Arm Offsets:** Separate settings for left and right arms to support dual-wielding or asymmetrical weapons.
-*   **Smooth Transitions:** Trigonometric curvature and biased smoothing for natural movement at extreme look angles.
-
-## Dependencies
-*   **NeoForge 1.21.1**
-*   **First Person Model**
-*   **Better Combat**
-*   **PlayerAnimator** (Required for Mixins)
-*   **Cloth Config API** (Required for GUI)
 
 ---
 
@@ -31,7 +33,6 @@ We want to ensure that FPM works seamlessly with every major gameplay and animat
 |:-----------|:------------------------------------------|:--------------------|
 | **High**   | Multi-language support (I18n)             | ⏳ To Do             |
 | **Medium** | Port to Fabric/Quilt                      | 🔍 Under Review     |
-| **Medium** | Compatibility with EMF with Fresh Moves   | 🔍 Under Review     |
 | **Low**    | Custom animation profiles per weapon type | 💡 Planned          |
 | **Low**    | Portability to other versions             | 💡 Planned          |
 
