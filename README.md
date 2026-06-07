@@ -1,6 +1,6 @@
-# FPM x Better Combat Compatibility (NeoForge 1.21.1)
+# FPModel x Combat
 
-A technical compatibility mod designed to fix rendering alignment issues when using **First Person Model (FPM)** alongside **Better Combat**, **Spell Engine**, and **Combat Roll**.
+A technical compatibility mod designed to fix rendering alignment issues when using **First Person Model (FPM)** alongside **Better Combat**, **Spell Engine**, **Combat Roll**, **EMF** and accessories.
 
 ## 🎯 Our Mission
 Initially born to bridge the gap within the **Better Combat** ecosystem, this project aims to evolve into a **universal integration hub** for **First Person Model**. 
@@ -12,12 +12,12 @@ We want to ensure that FPM works seamlessly with every major gameplay and animat
 
 ## 🤝 Compatible Mods
 This mod acts as a bridge, harmonizing the interactions between the following mods:
-*   **[First Person Model (FPM)](https://www.curseforge.com/minecraft/mc-mods/first-person-model)** - The core rendering engine.
-*   **[Better Combat](https://www.curseforge.com/minecraft/mc-mods/better-combat-by-ironfist)** - Dynamic attack animations.
-*   **[Entity Model Features (EMF)](https://www.curseforge.com/minecraft/mc-mods/entity-model-features)** - Custom player models and animations (e.g., *Fresh Moves*).
-*   **[Spell Engine](https://www.curseforge.com/minecraft/mc-mods/spell-engine)** - Casting and magic animations.
-*   **[Combat Roll](https://www.curseforge.com/minecraft/mc-mods/combat-roll)** - Evasion and rolling maneuvers.
-*   **[Accessories](https://www.curseforge.com/minecraft/mc-mods/accessories)** - Proper hiding of head-related accessories in first-person.
+*   **[First Person Model (FPM)](https://modrinth.com/mod/first-person-model)** - The core rendering engine.
+*   **[Better Combat](https://modrinth.com/mod/first-person-model)** - Dynamic attack animations.
+*   **[Entity Model Features (EMF)](https://modrinth.com/mod/entity-model-features)** - Custom player models and animations (e.g., *Fresh Moves*).
+*   **[Spell Engine](https://modrinth.com/mod/spell-engine)** - Casting and magic animations.
+*   **[Combat Roll](https://modrinth.com/mod/combat-roll)** - Evasion and rolling maneuvers.
+*   **[Accessories](https://modrinth.com/mod/accessories)** - Proper hiding of head-related accessories in first-person.
 
 ## Key Features
 *   **Kinematic Alignment:** Automatically syncs arm rotation with camera pitch during attacks.
@@ -29,12 +29,13 @@ This mod acts as a bridge, harmonizing the interactions between the following mo
 
 ## 🛠 Project Roadmap & Planning
 
-| Priority   | Task                                      | Status              |
-|:-----------|:------------------------------------------|:--------------------|
-| **High**   | Multi-language support (I18n)             | ⏳ To Do             |
-| **Medium** | Port to Fabric/Quilt                      | 🔍 Under Review     |
-| **Low**    | Custom animation profiles per weapon type | 💡 Planned          |
-| **Low**    | Portability to other versions             | 💡 Planned          |
+| Priority   | Task                                                     | Status              |
+|:-----------|:---------------------------------------------------------|:--------------------|
+| **High**   | Multi-language support (I18n)                            | ⏳ To Do             |
+| **Medium** | Compatibility between two hand weapons bc hands with EMF | 🔍 Under Review     |
+| **Medium** | Port to Fabric/Quilt                                     | 🔍 Under Review     |
+| **Low**    | Custom animation profiles per weapon type                | 💡 Planned          |
+| **Low**    | Portability to other versions                            | 💡 Planned          |
 
 ---
 

@@ -1,4 +1,4 @@
-package com.kaokod.fpm_bc_compat.integration;
+package com.kaokod.fpm_x_compat.integration;
 
 import java.lang.reflect.Method;
 
@@ -25,10 +25,10 @@ public class FirstPersonModelCompat {
             RENDER_STATE_VALIDATOR = firstPersonApiClass.getMethod("isRenderingPlayer");
 
             isModAvailable = true;
-            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] First Person Model integration established.");
+            com.kaokod.fpm_x_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] First Person Model integration established.");
         } catch (Exception e) {
             isModAvailable = false;
-            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] First Person Model not detected, skipping integration.");
+            com.kaokod.fpm_x_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] First Person Model not detected, skipping integration.");
         }
     }
 

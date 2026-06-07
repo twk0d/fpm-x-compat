@@ -1,6 +1,6 @@
-package com.kaokod.fpm_bc_compat.mixin;
+package com.kaokod.fpm_x_compat.mixin;
 
-import com.kaokod.fpm_bc_compat.AttackStateManager;
+import com.kaokod.fpm_x_compat.AttackStateManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

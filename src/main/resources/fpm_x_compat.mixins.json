@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.kaokod.fpm_bc_compat.mixin",
+  "package": "com.kaokod.fpm_x_compat.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
     "PlayerAnimationProcessorMixin",

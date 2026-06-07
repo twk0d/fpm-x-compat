@@ -1,5 +1,11 @@
 # Changelog
 
+# 0.1.0
+- Updated README to reflect current mod compatibility.
+- Update project directory structure / mod id / artifact
+- changed neoforge version to 21.1.219 instead of 21.1.221 to support more clients.
+- Updated README tasks board with a new task: Support Two hands weapons of bc with EMF models.
+
 # 0.0.5
 - **Intelligent Head Hiding:** Added a context-aware visibility system that hides the local player's head and accessories in first-person (supporting custom EMF bone names) while keeping them fully visible for other players and in third-person view.
 - **Multiplayer Safety:** Refactored all rendering offsets (Torso Z-axis, leg stabilization) to apply exclusively to the local player in first-person, preventing visual glitches on other players.

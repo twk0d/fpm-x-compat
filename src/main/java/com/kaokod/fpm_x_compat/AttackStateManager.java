@@ -1,10 +1,10 @@
-package com.kaokod.fpm_bc_compat;
+package com.kaokod.fpm_x_compat;
 
-import com.kaokod.fpm_bc_compat.integration.BetterCombatCompat;
-import com.kaokod.fpm_bc_compat.integration.CombatRollCompat;
-import com.kaokod.fpm_bc_compat.integration.FirstPersonModelCompat;
-import com.kaokod.fpm_bc_compat.integration.SpellEngineCompat;
-import com.kaokod.fpm_bc_compat.util.MinecraftPlayerUtil;
+import com.kaokod.fpm_x_compat.integration.BetterCombatCompat;
+import com.kaokod.fpm_x_compat.integration.CombatRollCompat;
+import com.kaokod.fpm_x_compat.integration.FirstPersonModelCompat;
+import com.kaokod.fpm_x_compat.integration.SpellEngineCompat;
+import com.kaokod.fpm_x_compat.util.MinecraftPlayerUtil;
 
 /**
  * Centralized state tracker that orchestrates multi-mod interaction.
@@ -20,7 +20,7 @@ public class AttackStateManager {
         if (!FirstPersonModelCompat.isRenderingPlayerBody()) {
             return false;
         }
-        return isPlayerInAttackState(com.kaokod.fpm_bc_compat.util.MinecraftPlayerUtil.getClientPlayer());
+        return isPlayerInAttackState(com.kaokod.fpm_x_compat.util.MinecraftPlayerUtil.getClientPlayer());
     }
 
     public static boolean isPlayerInAttackState(net.minecraft.world.entity.player.Player player) {
@@ -29,7 +29,7 @@ public class AttackStateManager {
     }
 
     public static boolean isPlayerInRollState() {
-        return isPlayerInRollState(com.kaokod.fpm_bc_compat.util.MinecraftPlayerUtil.getClientPlayer());
+        return isPlayerInRollState(com.kaokod.fpm_x_compat.util.MinecraftPlayerUtil.getClientPlayer());
     }
 
     public static boolean isPlayerInRollState(net.minecraft.world.entity.player.Player player) {

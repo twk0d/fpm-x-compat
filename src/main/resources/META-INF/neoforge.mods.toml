@@ -5,7 +5,7 @@ loaderVersion = "${loader_version_range}"
 license = "${mod_license}"
 
 [[mods]]
-modId = "fpm_bc_compat"
+modId = "fpm_x_compat"
 version = "${mod_version}"
 displayName = "${mod_name}"
 authors = "Kaokod"
@@ -15,23 +15,23 @@ Dynamically aligns arm rendering with camera pitch for a seamless combat experie
 '''
 
 [[mixins]]
-config = "fpm_bc_compat.mixins.json"
+config = "fpm_x_compat.mixins.json"
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "neoforge"
 type = "required"
 versionRange = "[${neo_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "minecraft"
 type = "required"
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "playeranimator"
 type = "required"
 versionRange = "${mod_wildcard_version}"
@@ -39,7 +39,7 @@ ordering = "AFTER"
 side = "CLIENT"
 reason = "Provides the animation API for Mixin injection."
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "cloth_config"
 type = "required"
 versionRange = "${mod_wildcard_version}"
@@ -47,7 +47,7 @@ ordering = "AFTER"
 side = "CLIENT"
 reason = "Provides the configuration GUI."
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "firstperson"
 type = "required"
 versionRange = "${mod_wildcard_version}"
@@ -55,7 +55,7 @@ ordering = "AFTER"
 side = "CLIENT"
 reason = "Primary mod for first-person body rendering. The core of this compatibility fix."
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "bettercombat"
 type = "required"
 versionRange = "${mod_wildcard_version}"
@@ -63,7 +63,7 @@ ordering = "AFTER"
 side = "CLIENT"
 reason = "Required for dynamic combat animation synchronization."
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "spell_engine"
 type = "optional"
 versionRange = "${mod_wildcard_version}"
@@ -71,7 +71,7 @@ ordering = "AFTER"
 side = "CLIENT"
 reason = "Optional integration for spell casting animations."
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "combatroll"
 type = "optional"
 versionRange = "${mod_wildcard_version}"
@@ -79,7 +79,7 @@ ordering = "AFTER"
 side = "CLIENT"
 reason = "Optional integration to prevent visual glitches during rolls."
 
-[[dependencies.fpm_bc_compat]]
+[[dependencies.fpm_x_compat]]
 modId = "accessories"
 type = "optional"
 versionRange = "${mod_wildcard_version}"

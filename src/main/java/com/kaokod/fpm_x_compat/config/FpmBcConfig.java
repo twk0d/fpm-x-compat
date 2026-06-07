@@ -1,4 +1,4 @@
-package com.kaokod.fpm_bc_compat.config;
+package com.kaokod.fpm_x_compat.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;

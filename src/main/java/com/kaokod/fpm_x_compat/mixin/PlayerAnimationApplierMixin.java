@@ -1,7 +1,7 @@
-package com.kaokod.fpm_bc_compat.mixin;
+package com.kaokod.fpm_x_compat.mixin;
 
 
-import com.kaokod.fpm_bc_compat.AttackStateManager;
+import com.kaokod.fpm_x_compat.AttackStateManager;
 import dev.kosmx.playerAnim.impl.animation.AnimationApplier;
 import net.minecraft.client.model.geom.ModelPart;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +22,7 @@ public class PlayerAnimationApplierMixin {
     */
    @Inject(method = "updatePart", at = @At("TAIL"))
    private void adjustPartRendering(String modelPartName, ModelPart modelPart, CallbackInfo callbackInfo) {
-      boolean isFirstPerson = com.kaokod.fpm_bc_compat.integration.FirstPersonModelCompat.isRenderingPlayerBody();
+      boolean isFirstPerson = com.kaokod.fpm_x_compat.integration.FirstPersonModelCompat.isRenderingPlayerBody();
 
       // Universal Head Hiding: Hide the head and hat parts ONLY for the local player in first-person.
       // We use contains() to catch custom EMF parts (e.g., head_decoration, hat_layer).

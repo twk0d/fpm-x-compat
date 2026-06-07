@@ -1,6 +1,6 @@
-package com.kaokod.fpm_bc_compat.mixin;
+package com.kaokod.fpm_x_compat.mixin;
 
-import com.kaokod.fpm_bc_compat.integration.FirstPersonModelCompat;
+import com.kaokod.fpm_x_compat.integration.FirstPersonModelCompat;
 import io.wispforest.accessories.api.client.AccessoryRenderer;
 import io.wispforest.accessories.api.slot.SlotReference;
 import io.wispforest.accessories.client.AccessoriesRenderLayer;

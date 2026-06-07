@@ -1,7 +1,7 @@
-package com.kaokod.fpm_bc_compat;
+package com.kaokod.fpm_x_compat;
 
-import com.kaokod.fpm_bc_compat.config.FpmBcConfig;
-import com.kaokod.fpm_bc_compat.config.FpmBcConfigScreen;
+import com.kaokod.fpm_x_compat.config.FpmBcConfig;
+import com.kaokod.fpm_x_compat.config.FpmBcConfigScreen;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 @Mod(FpmBcCompatMod.MOD_IDENTIFIER)
 public class FpmBcCompatMod {
-    public static final String MOD_IDENTIFIER = "fpm_bc_compat";
+    public static final String MOD_IDENTIFIER = "fpm_x_compat";
     public static final Logger MOD_LOGGER = LoggerFactory.getLogger(MOD_IDENTIFIER);
 
     /**
@@ -37,11 +37,11 @@ public class FpmBcCompatMod {
 
         // Initialize cross-mod compatibility bridges
         MOD_LOGGER.info("[Lifecycle] Initializing compatibility bridges...");
-        com.kaokod.fpm_bc_compat.integration.BetterCombatCompat.init();
-        com.kaokod.fpm_bc_compat.integration.SpellEngineCompat.init();
-        com.kaokod.fpm_bc_compat.integration.CombatRollCompat.init();
-        com.kaokod.fpm_bc_compat.integration.FirstPersonModelCompat.init();
-        com.kaokod.fpm_bc_compat.integration.EmfCompat.init();
+        com.kaokod.fpm_x_compat.integration.BetterCombatCompat.init();
+        com.kaokod.fpm_x_compat.integration.SpellEngineCompat.init();
+        com.kaokod.fpm_x_compat.integration.CombatRollCompat.init();
+        com.kaokod.fpm_x_compat.integration.FirstPersonModelCompat.init();
+        com.kaokod.fpm_x_compat.integration.EmfCompat.init();
         MOD_LOGGER.info("[Lifecycle] Mod initialization sequence complete.");
     }
 }

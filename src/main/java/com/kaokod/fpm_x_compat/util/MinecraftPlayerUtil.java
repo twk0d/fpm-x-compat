@@ -1,4 +1,4 @@
-package com.kaokod.fpm_bc_compat.util;
+package com.kaokod.fpm_x_compat.util;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;

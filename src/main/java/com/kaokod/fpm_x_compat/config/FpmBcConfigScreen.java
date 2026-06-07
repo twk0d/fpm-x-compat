@@ -1,6 +1,6 @@
-package com.kaokod.fpm_bc_compat.config;
+package com.kaokod.fpm_x_compat.config;
 
-import com.kaokod.fpm_bc_compat.FpmBcCompatMod;
+import com.kaokod.fpm_x_compat.FpmBcCompatMod;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;

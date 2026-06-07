@@ -1,8 +1,7 @@
-package com.kaokod.fpm_bc_compat.integration;
+package com.kaokod.fpm_x_compat.integration;
 
 import java.lang.reflect.Method;
-import com.kaokod.fpm_bc_compat.util.MinecraftPlayerUtil;
-import net.minecraft.client.player.LocalPlayer;
+import com.kaokod.fpm_x_compat.util.MinecraftPlayerUtil;
 
 /**
  * Integration bridge for the Combat Roll mod.
@@ -27,10 +26,10 @@ public class CombatRollCompat {
             CHECK_PLAYER_ROLLING_STATE = rollManagerClass.getMethod("isRolling");
 
             isModAvailable = true;
-            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll integration established.");
+            com.kaokod.fpm_x_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll integration established.");
         } catch (Exception e) {
             isModAvailable = false;
-            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll not detected, skipping integration.");
+            com.kaokod.fpm_x_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll not detected, skipping integration.");
         }
     }
 

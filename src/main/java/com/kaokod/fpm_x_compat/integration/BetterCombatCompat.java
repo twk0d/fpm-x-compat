@@ -1,10 +1,9 @@
-package com.kaokod.fpm_bc_compat.integration;
+package com.kaokod.fpm_x_compat.integration;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import com.kaokod.fpm_bc_compat.util.MinecraftPlayerUtil;
+import com.kaokod.fpm_x_compat.util.MinecraftPlayerUtil;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.player.LocalPlayer;
 
 /**
  * Integration bridge for the Better Combat mod.
@@ -39,10 +38,10 @@ public class BetterCombatCompat {
             LAYER_ACTIVITY_CHECK_METHOD = modifierLayerClass.getMethod("isActive");
 
             isModAvailable = true;
-            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Better Combat integration established.");
+            com.kaokod.fpm_x_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Better Combat integration established.");
         } catch (Exception e) {
             isModAvailable = false;
-            com.kaokod.fpm_bc_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Better Combat not detected, skipping integration.");
+            com.kaokod.fpm_x_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Better Combat not detected, skipping integration.");
         }
     }
 

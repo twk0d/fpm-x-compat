@@ -1,8 +1,8 @@
-package com.kaokod.fpm_bc_compat.mixin;
+package com.kaokod.fpm_x_compat.mixin;
 
-import com.kaokod.fpm_bc_compat.AttackStateManager;
-import com.kaokod.fpm_bc_compat.config.FpmBcConfig;
-import com.kaokod.fpm_bc_compat.util.KinematicsUtil;
+import com.kaokod.fpm_x_compat.AttackStateManager;
+import com.kaokod.fpm_x_compat.config.FpmBcConfig;
+import com.kaokod.fpm_x_compat.util.KinematicsUtil;
 import dev.kosmx.playerAnim.api.TransformType;
 import dev.kosmx.playerAnim.core.impl.AnimationProcessor;
 import dev.kosmx.playerAnim.core.util.Vec3f;

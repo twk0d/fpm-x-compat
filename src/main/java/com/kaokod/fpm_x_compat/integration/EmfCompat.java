@@ -1,7 +1,7 @@
-package com.kaokod.fpm_bc_compat.integration;
+package com.kaokod.fpm_x_compat.integration;
 
-import com.kaokod.fpm_bc_compat.AttackStateManager;
-import com.kaokod.fpm_bc_compat.FpmBcCompatMod;
+import com.kaokod.fpm_x_compat.AttackStateManager;
+import com.kaokod.fpm_x_compat.FpmBcCompatMod;
 import net.minecraft.world.entity.player.Player;
 import traben.entity_model_features.EMFAnimationApi;
 import traben.entity_model_features.utils.EMFEntity;
