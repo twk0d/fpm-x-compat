@@ -19,6 +19,9 @@ This mod acts as a bridge, harmonizing the interactions between the following mo
 *   **[Combat Roll](https://modrinth.com/mod/combat-roll)** - Evasion and rolling maneuvers.
 *   **[Accessories](https://modrinth.com/mod/accessories)** - Proper hiding of head-related accessories in first-person.
 
+## 💡 Compatibility Recommendations
+If you are experiencing animation conflicts when using **Better Combat** alongside **EMF**-based texture packs (like *Fresh Animations* or *Fresh Moves*), we strongly recommend installing the **[Entity Player Compat](https://www.curseforge.com/minecraft/mc-mods/entity-player-compat)** mod. This bridge mod effectively synchronizes animation states, preventing the visual "glitching" or "stuttering" of caused by conflicting animation systems.
+
 ## Key Features
 *   **Kinematic Alignment:** Automatically syncs arm rotation with camera pitch during attacks.
 *   **Intelligent Head Hiding:** Dynamically hides the local player's head and accessories in first-person (including EMF custom models) while maintaining full visibility for other players.
@@ -32,7 +35,6 @@ This mod acts as a bridge, harmonizing the interactions between the following mo
 | Priority   | Task                                                     | Status              |
 |:-----------|:---------------------------------------------------------|:--------------------|
 | **High**   | Multi-language support (I18n)                            | ⏳ To Do             |
-| **Medium** | Compatibility between two hand weapons bc hands with EMF | 🔍 Under Review     |
 | **Medium** | Port to Fabric/Quilt                                     | 🔍 Under Review     |
 | **Low**    | Custom animation profiles per weapon type                | 💡 Planned          |
 | **Low**    | Portability to other versions                            | 💡 Planned          |
