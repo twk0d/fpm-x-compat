@@ -1,5 +1,14 @@
 # Changelog
 
+# 0.1.1
+- **Configurable Accessory Hiding:** Added a new configuration option `ignoredAccessorySlots` in `fpm_bc_compat-client.toml`. Users can now customize which accessory slots (e.g., "head", "hat", "mask") are hidden in first-person mode to prevent camera obstruction.
+- **Universal Curios Integration:** Implemented a source-level hiding mechanism for the **Curios API**. This ensures that all head-related accessories from any Curios-compatible mod are automatically hidden when the first-person body is rendered.
+- **Relics Mod Compatibility:** Added specialized fixes for the **Relics** mod to hide items that use custom renderers, specifically targeting the **Piglin Mask** and **Chef's Hat**.
+- **Artifacts Mod Compatibility:** Added a targeted fix for **Artifacts** to hide **Scarves** in first-person view. The logic uses texture-path detection to hide only the scarves while allowing other necklace-type items to remain visible.
+- **Enhanced Hiding Logic:** Refactored accessory hiding to use more stable injection points, improving compatibility across different mod versions and reducing the risk of Mixin application errors.
+- **Removed EMF Support:** Due to the existence of **Entity Player Compat** mod that solve the EMF compatibility issues.
+- **Files Renamed:** Files renamed to reflect new project name.
+
 # 0.1.0
 - Updated README to reflect current mod compatibility.
 - Update project directory structure / mod id / artifact

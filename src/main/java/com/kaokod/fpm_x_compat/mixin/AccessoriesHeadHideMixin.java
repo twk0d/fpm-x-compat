@@ -1,5 +1,7 @@
 package com.kaokod.fpm_x_compat.mixin;
 
+import com.kaokod.fpm_x_compat.FpmXCompatMod;
+import com.kaokod.fpm_x_compat.config.FpmXCompatConfig;
 import com.kaokod.fpm_x_compat.integration.FirstPersonModelCompat;
 import io.wispforest.accessories.api.client.AccessoryRenderer;
 import io.wispforest.accessories.api.slot.SlotReference;
@@ -55,15 +57,19 @@ public class AccessoriesHeadHideMixin {
             
             if (reference != null) {
                 String slotName = reference.slotName().toLowerCase();
-                
-                // Comprehensive check for any head-related slots
-                boolean isHeadRelated = slotName.contains("head") || 
-                                        slotName.contains("hat") || 
-                                        slotName.contains("face") || 
-                                        slotName.contains("mask") || 
-                                        slotName.contains("goggle");
+                boolean isIgnored = false;
 
-                if (isHeadRelated) {
+                // Check if this slot is in the ignore list
+                for (String ignoredSlot : FpmXCompatConfig.CLIENT.ignoredAccessorySlots.get()) {
+                    if (slotName.contains(ignoredSlot.toLowerCase())) {
+                        isIgnored = true;
+                        break;
+                    }
+                }
+                
+                FpmXCompatMod.MOD_LOGGER.info("Accessory in slot: " + slotName + ", Ignored: " + isIgnored);
+
+                if (isIgnored) {
                     return; // Skip rendering for this specific accessory
                 }
             }
