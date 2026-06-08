@@ -1,7 +1,7 @@
 package com.kaokod.fpm_x_compat.mixin;
 
 import com.kaokod.fpm_x_compat.AttackStateManager;
-import com.kaokod.fpm_x_compat.config.FpmBcConfig;
+import com.kaokod.fpm_x_compat.config.FpmXCompatConfig;
 import com.kaokod.fpm_x_compat.util.KinematicsUtil;
 import dev.kosmx.playerAnim.api.TransformType;
 import dev.kosmx.playerAnim.core.impl.AnimationProcessor;
@@ -57,7 +57,7 @@ public class PlayerAnimationProcessorMixin {
            info.setReturnValue(new Vec3f(0.0F, rotationY, 0.0F));
        } else if (type == TransformType.POSITION) {
            float verticalOffset = AttackStateManager.isPlayerCrouching() ? 
-               FpmBcConfig.CLIENT.bodyYOffset.get().floatValue() : 0.0F;
+               FpmXCompatConfig.CLIENT.bodyYOffset.get().floatValue() : 0.0F;
            info.setReturnValue(new Vec3f(0.0F, verticalOffset, 0.0F));
        } else if (type == TransformType.BEND) {
            info.setReturnValue(EMPTY_TRANSFORM_VEC);
@@ -66,7 +66,7 @@ public class PlayerAnimationProcessorMixin {
 
    @Unique
    private void handleArmTransformation(boolean isRight, TransformType type, Vec3f current, CallbackInfoReturnable<Vec3f> info) {
-       FpmBcConfig.Client config = FpmBcConfig.CLIENT;
+       FpmXCompatConfig.Client config = FpmXCompatConfig.CLIENT;
 
        // Common variables
        float multiplier = isRight ? config.rightArmPitchMultiplier.get().floatValue() : config.leftArmPitchMultiplier.get().floatValue();

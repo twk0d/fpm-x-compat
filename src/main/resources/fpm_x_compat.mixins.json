@@ -6,7 +6,10 @@
     "PlayerAnimationProcessorMixin",
     "FirstPersonLogicHandlerMixin",
     "PlayerAnimationApplierMixin",
-    "AccessoriesHeadHideMixin"
+    "AccessoriesHeadHideMixin",
+    "CuriosHeadHideMixin",
+    "RelicsHiderMixin",
+    "ArtifactsHiderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

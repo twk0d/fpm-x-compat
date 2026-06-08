@@ -1,6 +1,8 @@
 package com.kaokod.fpm_x_compat.integration;
 
 import java.lang.reflect.Method;
+
+import com.kaokod.fpm_x_compat.FpmXCompatMod;
 import com.kaokod.fpm_x_compat.util.MinecraftPlayerUtil;
 
 /**
@@ -22,10 +24,10 @@ public class SpellEngineCompat {
             SPELL_CASTING_VALIDATOR_METHOD = spellCasterEntityClass.getMethod("isCastingSpell");
 
             isModAvailable = true;
-            com.kaokod.fpm_x_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Spell Engine integration established.");
+            FpmXCompatMod.MOD_LOGGER.info("[Bridge] Spell Engine integration established.");
         } catch (Exception e) {
             isModAvailable = false;
-            com.kaokod.fpm_x_compat.FpmBcCompatMod.MOD_LOGGER.info("[Bridge] Spell Engine not detected, skipping integration.");
+            FpmXCompatMod.MOD_LOGGER.info("[Bridge] Spell Engine not detected, skipping integration.");
         }
     }
 

@@ -1,6 +1,6 @@
 package com.kaokod.fpm_x_compat.config;
 
-import com.kaokod.fpm_x_compat.FpmBcCompatMod;
+import com.kaokod.fpm_x_compat.FpmXCompatMod;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
@@ -8,14 +8,14 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
-public class FpmBcConfigScreen {
+public class FpmXCompatConfigScreen {
 
     public static Screen create(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
                 .setTitle(Component.translatable("fpm_bc_compat.config.title").withStyle(ChatFormatting.BOLD, ChatFormatting.GOLD));
 
-        FpmBcConfig.Client config = FpmBcConfig.CLIENT;
+        FpmXCompatConfig.Client config = FpmXCompatConfig.CLIENT;
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
         ConfigCategory rightArmCat = builder.getOrCreateCategory(Component.translatable("fpm_bc_compat.config.category.right_arm"));
@@ -41,7 +41,7 @@ public class FpmBcConfigScreen {
         general.addEntry(entryBuilder.startDoubleField(Component.translatable("fpm_bc_compat.config.transition_speed"), config.biasSmoothingSpeed.get())
                 .setDefaultValue(0.1).setSaveConsumer(config.biasSmoothingSpeed::set).build());
 
-        builder.setSavingRunnable(() -> FpmBcCompatMod.MOD_LOGGER.info("FPM x Better Combat Configuration Saved."));
+        builder.setSavingRunnable(() -> FpmXCompatMod.MOD_LOGGER.info("FPM x Better Combat Configuration Saved."));
         return builder.build();
     }
 

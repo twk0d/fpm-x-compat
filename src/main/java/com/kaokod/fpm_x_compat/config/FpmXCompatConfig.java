@@ -3,7 +3,7 @@ package com.kaokod.fpm_x_compat.config;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
-public class FpmBcConfig {
+public class FpmXCompatConfig {
     public static final ModConfigSpec CLIENT_SPEC;
     public static final Client CLIENT;
 
@@ -41,11 +41,15 @@ public class FpmBcConfig {
         // --- Global Spec ---
         public final ModConfigSpec.DoubleValue biasSmoothingSpeed;
         public final ModConfigSpec.DoubleValue bodyYOffset;
+        public final ModConfigSpec.ConfigValue<java.util.List<? extends String>> ignoredAccessorySlots;
 
         public Client(ModConfigSpec.Builder builder) {
             builder.push("Global Animation Settings");
             bodyYOffset = builder.defineInRange("bodyYOffset", -0.1, -1.0, 1.0);
             biasSmoothingSpeed = builder.defineInRange("biasSmoothingSpeed", 0.1, 0.01, 1.0);
+            ignoredAccessorySlots = builder
+                .comment("List of accessory slot names (case-insensitive) to hide in first-person mode.")
+                .defineList("ignoredAccessorySlots", java.util.Arrays.asList("head", "hat", "face", "mask", "goggle"), o -> o instanceof String);
             builder.pop();
 
             builder.push("Right Arm Settings");
