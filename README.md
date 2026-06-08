@@ -1,4 +1,4 @@
-# FPModel x Combat
+# FPModel x Compat
 
 A technical compatibility mod designed to fix model issues when using **First Person Model (FPM)** alongside mods like **Better Combat**, **Curios**, **accessories**, etc...
 
@@ -33,7 +33,7 @@ This mod acts as a technical bridge, harmonizing interactions between several ma
     *   **Scarf Visibility Logic:** Implementation of a specialized texture-based filter to hide **Scarves** in first-person while allowing other necklaces and amulets to render normally.
 
 ## 💡 Compatibility Recommendations
-If you are experiencing animation conflicts when using **Better Combat** alongside **EMF**-based texture packs (like *Fresh Animations* or *Fresh Moves*), we strongly recommend installing the **[Entity Player Compat](https://www.curseforge.com/minecraft/mc-mods/entity-player-compat)** mod. This bridge mod effectively synchronizes animation states, preventing the visual "glitching" or "stuttering" of caused by conflicting animation systems.
+If you are experiencing animation conflicts when using **Better Combat** alongside **EMF**-based texture packs (like *Fresh Animations Player* or *Fresh Moves*), we strongly recommend installing the **[Entity Player Compat](https://www.curseforge.com/minecraft/mc-mods/entity-player-compat)** mod. This bridge mod effectively synchronizes animation states, preventing the visual "glitching" or "stuttering" of caused by conflicting animation systems.
 
 ## Key Features
 *   **Kinematic Alignment:** Automatically syncs arm rotation with camera pitch during attacks.
