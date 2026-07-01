@@ -1,218 +1,76 @@
 plugins {
-    id 'java-library'
-    id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.141'
-    id 'idea'
+    id 'dev.architectury.loom' version '1.9-SNAPSHOT' apply false
+    id 'architectury-plugin' version '3.4-SNAPSHOT'
+    id 'com.gradleup.shadow' version '8.3.6' apply false
 }
 
-tasks.named('wrapper', Wrapper).configure {
-    distributionType = Wrapper.DistributionType.BIN
+architectury {
+    minecraft = project.minecraft_version
 }
 
-version = mod_version
-group = mod_group_id
-
-sourceSets.main.resources {
-    srcDir('src/generated/resources')
-    exclude("**/*.bbmodel")
-    exclude("src/generated/**/.cache")
+allprojects {
+    group = rootProject.mod_group_id
+    version = rootProject.mod_version
 }
 
-tasks.named('processResources', ProcessResources).configure {
-    def replaceProperties = [
-        minecraft_version_range: minecraft_version_range,
-        neo_version: neo_version,
-        loader_version_range: loader_version_range,
-        mod_id: mod_id,
-        mod_name: mod_name,
-        mod_license: mod_license,
-        mod_version: mod_version,
-        mod_wildcard_version: mod_wildcard_version
-    ]
+subprojects {
+    apply plugin: 'dev.architectury.loom'
+    apply plugin: 'architectury-plugin'
+    apply plugin: 'maven-publish'
 
-    inputs.properties(replaceProperties)
-
-    filesMatching('META-INF/neoforge.mods.toml') {
-        expand(replaceProperties)
+    base {
+        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
+        archivesName = "$rootProject.archives_name-$project.name"
     }
-}
+    version = rootProject.mod_version + "+${rootProject.minecraft_version}"
 
-repositories {
-    // Modrinth Maven for Better Combat and First Person Model
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
-        content {
-            includeGroup "maven.modrinth"
-        }
-    }
-    // KosmX's Maven for Player Animation Lib
-    maven {
-        name = "KosmX"
-        url = "https://maven.kosmx.dev/"
-    }
-    // Shedaniel's Maven for Cloth Config
-    maven {
-        name = "Shedaniel"
-        url = "https://maven.shedaniel.me/"
-    }
-    // Wispforest Maven for Accessories
-    maven {
-        name = "Wispforest"
-        url = "https://maven.wispforest.io/releases"
-    }
-}
-
-base {
-    archivesName = mod_id
-}
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-
-neoForge {
-    version = project.neo_version
-
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
-
-    runs {
-        client {
-            client()
-            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-        }
-
-        server {
-            server()
-            programArgument '--nogui'
-            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-        }
-
-        gameTestServer {
-            type = "gameTestServer"
-            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-        }
-
-        data {
-            data()
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
-        }
-
-        configureEach {
-            systemProperty 'forge.logging.markers', 'REGISTRIES'
-            logLevel = org.slf4j.event.Level.DEBUG
-        }
-    }
-
-    mods {
-        "${mod_id}" {
-            sourceSet(sourceSets.main)
-        }
-    }
-}
-
-configurations {
-    runtimeClasspath.extendsFrom localRuntime
-}
-
-dependencies {
-    //Mod Dependencies
-        // Configuration
-    implementation "me.shedaniel.cloth:cloth-config-neoforge:15.0.140"
-
-    //Integrations
-        // First Person Model
-    implementation "maven.modrinth:first-person-model:2.7.1-neoforge,1.21.1"
-
-        // Better Combat
-    implementation "maven.modrinth:better-combat:2.3.2+1.21.1-neoforge"
-    implementation "maven.modrinth:playeranimator:2.0.4+1.21.1-forge"
-
-        // Spell Engine
-    implementation "maven.modrinth:forgified-fabric-api:0.116.7+2.2.4+1.21.1-neoforge,1.21.1"
-    implementation "maven.modrinth:spell-engine:1.9.9+1.21.1-neoforge"
-    implementation "maven.modrinth:spell-power:1.4.6+1.21.1-neoforge"
-
-        // Combat Roll
-    implementation "maven.modrinth:combat-roll:2.0.6+1.21.1-neoforge"
-
-        // Curios
-    implementation "maven.modrinth:curios:9.5.1+1.21.1-neoforge"
-
-        // Accessories
-    implementation "maven.modrinth:owo-lib:0.12.15.5-beta.1+1.21-neoforge"
-    implementation "maven.modrinth:accessories:1.1.0-beta.53+1.21.1-neoforge"
-    implementation "maven.modrinth:accessories-compat-layer:0.1.12-neoforge"
-
-        // Not Enough Animations
-    implementation "maven.modrinth:not-enough-animations:1.12.3-neoforge,1.21.1"
-
-        // Entity X Features
-    implementation "maven.modrinth:entity-model-features:3.2.4-neoforge-1.21"
-    implementation "maven.modrinth:entitytexturefeatures:7.1-neoforge-1.21"
-    implementation "maven.modrinth:esf:0.8.1-neoforge-1.21"
-
-        // Artifacts and relics for curios testing
-    implementation "maven.modrinth:artifacts:13.2.1-neoforge,1.21.1"
-    implementation "maven.modrinth:architectury-api:13.0.8+neoforge"
-    implementation "maven.modrinth:octo-lib:0.6.2-neoforge,1.21.1"
-    implementation "maven.modrinth:relics-mod:0.12.8-neoforge,1.21.1"
-    implementation "maven.modrinth:reliquified-artifacts:1.0.6-neoforge,1.21.1"
-}
-
-
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            from components.java
-        }
-    }
     repositories {
         maven {
-            url "file://${project.projectDir}/repo"
-        }
-    }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
-
-tasks.register('downloadResourcePacks') {
-    description = 'Downloads required resource packs for testing.'
-    group = 'build setup'
-
-    doLast {
-        def packs = [
-            "FreshMoves.zip": "https://cdn.modrinth.com/data/slufHzC2/versions/4uyHvhnf/-1.21.2%20Fresh%20Moves%20v3.1%20%28With%20Animated%20Eyes%29.zip?mr_download_reason=standalone&mr_game_version=1.21.1"
-        ]
-        def packDir = file("run/resourcepacks")
-        if (!packDir.exists()) packDir.mkdirs()
-
-        packs.each { fileName, url ->
-            def destFile = file("${packDir}/${fileName}")
-            if (!destFile.exists()) {
-                println "Downloading resource pack: ${fileName}..."
-                try {
-                    new URL(url).withInputStream { i -> destFile.withOutputStream { it << i } }
-                    println "Download complete: ${fileName}"
-                } catch (Exception e) {
-                    println "Failed to download ${fileName}: ${e.message}"
-                }
+            name = "Modrinth"
+            url = "https://api.modrinth.com/maven"
+            content {
+                includeGroup "maven.modrinth"
             }
         }
+        maven {
+            name = "KosmX"
+            url = "https://maven.kosmx.dev/"
+        }
+        maven {
+            name = "Shedaniel"
+            url = "https://maven.shedaniel.me/"
+        }
+        maven {
+            name = "Wispforest"
+            url = "https://maven.wispforest.io/releases"
+        }
+        maven {
+            name = "SpongePowered"
+            url = "https://repo.spongepowered.org/repository/maven-public/"
+        }
     }
-}
 
-// Automatically download packs whenever runClient is executed
-tasks.named('runClient').configure {
-    dependsOn 'downloadResourcePacks'
-}
+    dependencies {
+        minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
+        mappings loom.officialMojangMappings()
+    }
 
-idea {
-    module {
-        downloadSources = true
-        downloadJavadoc = true
+    java {
+        withSourcesJar()
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        it.options.release = 21
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                artifactId = base.archivesName.get()
+                from components.java
+            }
+        }
     }
 }

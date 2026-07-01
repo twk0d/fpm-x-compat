@@ -1,0 +1,98 @@
+plugins {
+    id 'com.gradleup.shadow'
+}
+
+def platform = project.name;
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+
+    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+    shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
+
+    // Common Integrations (Fabric versions)
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
+    
+    // First Person Model and dependencies
+    modCompileOnly "maven.modrinth:${project.fabric_fpm_file}" // First Person Model
+
+    // Not Enough Animations
+    modCompileOnly "maven.modrinth:${project.fabric_not_enough_animations_file}" // Not Enough Animations
+
+    // Better Combat and dependencies
+    modCompileOnly "maven.modrinth:${project.fabric_better_combat_file}" // Better Combat
+    modCompileOnly "maven.modrinth:${project.fabric_player_animator_file}" // Player Animator
+    modCompileOnly "maven.modrinth:${project.fabric_player_animation_lib_file}" // Player Animation Library
+
+
+    // Spell Engine (Optional integrations)
+    modCompileOnly "maven.modrinth:${project.fabric_spell_engine_file}" // Spell Engine
+    modCompileOnly "maven.modrinth:${project.fabric_spell_power_file}" // Spell Power
+    modCompileOnly "maven.modrinth:${project.fabric_tiny_config_file}" // Tiny Config
+
+    // Combat Roll (Fabric version)
+    modCompileOnly "maven.modrinth:${project.fabric_combat_roll_file}" // Combat Roll
+
+    // Trinkets (Curios equivalent)
+    modCompileOnly "maven.modrinth:${project.fabric_trinkets_file}" // Trinkets
+
+    // Accessories
+    modCompileOnly "io.wispforest:owo-lib:${project.owo_lib_version}" // OwO Lib
+    modCompileOnly "maven.modrinth:${project.fabric_accessories_file}" // Accessories
+
+    // Artifacts and relics for curios testing
+    modCompileOnly "maven.modrinth:${project.fabric_artifacts_file}" // Artifacts
+    modCompileOnly "maven.modrinth:${project.fabric_architecture_file}" // Architecture
+}
+
+processResources {
+    def version = project.version
+    def minecraft_version = project.minecraft_version
+    def mod_id = project.mod_id
+    def mod_name = project.mod_name
+    def mod_license = project.mod_license
+    def fabric_loader_version = project.fabric_loader_version
+
+    inputs.property 'version', version
+    inputs.property 'minecraft_version', minecraft_version
+    inputs.property 'mod_id', mod_id
+    inputs.property 'mod_name', mod_name
+    inputs.property 'mod_license', mod_license
+    inputs.property 'fabric_loader_version', fabric_loader_version
+    
+    filesMatching('fabric.mod.json')  {
+        expand version: version, minecraft_version: minecraft_version, mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, fabric_loader_version: fabric_loader_version
+    }
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+}

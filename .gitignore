@@ -1,5 +1,6 @@
 ### Gradle ###
 .gradle
+.architectury-transformer/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/**/build/

@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.kaokod.fpm_x_compat.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "PlayerAnimationProcessorMixin",
+    "FirstPersonLogicHandlerMixin",
+    "PlayerAnimationApplierMixin",
+    "AccessoriesHeadHideMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "plugin": "com.kaokod.fpm_x_compat.mixin.FpmXCompatMixinPlugin"
+}

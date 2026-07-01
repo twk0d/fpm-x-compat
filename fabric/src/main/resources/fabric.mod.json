@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "fpm_x_compat",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "Technical compatibility fix for First Person Model, Better Combat, Spell Engine, and Combat Roll.",
+  "authors": [
+    "Kaokod"
+  ],
+  "contact": {},
+  "license": "${mod_license}",
+  "icon": "assets/fpm_x_compat/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.kaokod.fpm_x_compat.FpmXCompatFabric"
+    ]
+  },
+  "mixins": [
+    "fpm_x_compat.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": ">=${minecraft_version}",
+    "java": ">=21",
+    "fabric-api": "*",
+    "cloth-config": "*",
+    "bettercombat": "*"
+  },
+  "suggests": {
+    "spell_engine": "*",
+    "playeranimator": "*",
+    "combatroll": "*",
+    "firstperson": "*",
+    "accessories": "*"
+  }
+}
