@@ -25,8 +25,8 @@ configurations {
 }
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+    modImplementation "net.fabricmc:fabric-loader:$project.fabric_loader_version"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$project.fabric_api_version"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
@@ -35,16 +35,18 @@ dependencies {
     modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
+
+    // Mod Menu
+    modImplementation "maven.modrinth:${project.fabric_mod_menu_file}" // Mod Menu
     
     // First Person Model and dependencies
     modImplementation "maven.modrinth:${project.fabric_not_enough_animations_file}" // Not Enough Animations
-    modImplementation "maven.modrinth:${project.fabric_fpm_file}" // First Person Model
+    modCompileOnly "maven.modrinth:${project.fabric_fpm_file}" // First Person Model
+    // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
 
     // Better Combat and dependencies
     modImplementation "maven.modrinth:${project.fabric_better_combat_file}" // Better Combat
     modImplementation "maven.modrinth:${project.fabric_player_animator_file}" // Player Animator
-//    modImplementation "maven.modrinth:${project.fabric_player_animation_lib_file}" // Player Animation Library
-
 
     // Spell Engine
     modImplementation "maven.modrinth:${project.fabric_spell_engine_file}" // Spell Engine
@@ -67,14 +69,14 @@ dependencies {
     modImplementation "io.wispforest:owo-lib:${project.owo_lib_version}" // OwO Lib
     modImplementation "maven.modrinth:${project.fabric_accessories_file}" // Accessories
     modImplementation "maven.modrinth:${project.fabric_accessories_compat_file}" // Accessories compatibility
-    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.7-beta.3")))
+    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:${project.mixinsquared_version}")))
 
     // Artifacts and relics for curios testing
     modImplementation "maven.modrinth:${project.fabric_artifacts_file}" // Artifacts
     modImplementation "maven.modrinth:${project.fabric_architecture_file}" // Architecture
-    modImplementation "be.florens:expandability-fabric:12.0.0"
-    modImplementation "maven.modrinth:K01OU20C:nLsCe2VD" // Cardinal Components API
-    modImplementation "com.electronwill.night-config:toml:3.6.0"
+    modImplementation "be.florens:expandability-fabric:${project.expandability_version}"
+    modImplementation "maven.modrinth:${project.fabric_cardinal_components_file}" // Cardinal Components API
+    modImplementation "com.electronwill.night-config:toml:${project.night_config_version}"
 }
 
 processResources {

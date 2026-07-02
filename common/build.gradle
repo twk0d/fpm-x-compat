@@ -7,7 +7,7 @@ dependencies {
     // which get remapped to the correct annotations on each platform.
     compileOnly "net.fabricmc:fabric-loader:$project.fabric_loader_version"
     compileOnly "org.spongepowered:mixin:${project.mixin_version}"
-    compileOnly "org.ow2.asm:asm-tree:9.6"
+    compileOnly "org.ow2.asm:asm-tree:${project.asm_version}"
 
     // Compile-only APIs used directly by shared mixins.
     modCompileOnly("maven.modrinth:first-person-model:${project.fpm_version}")
