@@ -48,6 +48,14 @@ subprojects {
             name = "SpongePowered"
             url = "https://repo.spongepowered.org/repository/maven-public/"
         }
+        maven {
+            name "reposiliteRepository"
+            url "https://maven.florens.be/releases"
+        }
+        maven {
+            name "Bawnorton repository"
+            url = "https://maven.bawnorton.com/releases"
+        }
     }
 
     dependencies {

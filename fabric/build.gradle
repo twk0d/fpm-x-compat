@@ -37,35 +37,44 @@ dependencies {
     }
     
     // First Person Model and dependencies
-    modCompileOnly "maven.modrinth:${project.fabric_fpm_file}" // First Person Model
-
-    // Not Enough Animations
-    modCompileOnly "maven.modrinth:${project.fabric_not_enough_animations_file}" // Not Enough Animations
+    modImplementation "maven.modrinth:${project.fabric_not_enough_animations_file}" // Not Enough Animations
+    modImplementation "maven.modrinth:${project.fabric_fpm_file}" // First Person Model
 
     // Better Combat and dependencies
-    modCompileOnly "maven.modrinth:${project.fabric_better_combat_file}" // Better Combat
-    modCompileOnly "maven.modrinth:${project.fabric_player_animator_file}" // Player Animator
-    modCompileOnly "maven.modrinth:${project.fabric_player_animation_lib_file}" // Player Animation Library
+    modImplementation "maven.modrinth:${project.fabric_better_combat_file}" // Better Combat
+    modImplementation "maven.modrinth:${project.fabric_player_animator_file}" // Player Animator
+//    modImplementation "maven.modrinth:${project.fabric_player_animation_lib_file}" // Player Animation Library
 
 
-    // Spell Engine (Optional integrations)
-    modCompileOnly "maven.modrinth:${project.fabric_spell_engine_file}" // Spell Engine
-    modCompileOnly "maven.modrinth:${project.fabric_spell_power_file}" // Spell Power
-    modCompileOnly "maven.modrinth:${project.fabric_tiny_config_file}" // Tiny Config
+    // Spell Engine
+    modImplementation "maven.modrinth:${project.fabric_spell_engine_file}" // Spell Engine
+    modImplementation "maven.modrinth:${project.fabric_spell_power_file}" // Spell Power
+    modImplementation "maven.modrinth:${project.fabric_tiny_config_file}" // Tiny Config
 
-    // Combat Roll (Fabric version)
-    modCompileOnly "maven.modrinth:${project.fabric_combat_roll_file}" // Combat Roll
+    // Combat Roll
+    modImplementation "maven.modrinth:${project.fabric_combat_roll_file}" // Combat Roll
 
     // Trinkets (Curios equivalent)
     modCompileOnly "maven.modrinth:${project.fabric_trinkets_file}" // Trinkets
+    // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
+
+    // Sorry, but trinkets ignores the Cardinal Components API (CCA) via modImplementatios, he need to use their own version
+    // of CCA provided in his METAINF folder, the easiest way to fix this is to install the .jar file in your mods folder,
+    // and it will work fine, but if you want to use the mod as a dependency, you need to use the CCA provided by
+    // Trinkets, which is not ideal, but it works.
 
     // Accessories
-    modCompileOnly "io.wispforest:owo-lib:${project.owo_lib_version}" // OwO Lib
-    modCompileOnly "maven.modrinth:${project.fabric_accessories_file}" // Accessories
+    modImplementation "io.wispforest:owo-lib:${project.owo_lib_version}" // OwO Lib
+    modImplementation "maven.modrinth:${project.fabric_accessories_file}" // Accessories
+    modImplementation "maven.modrinth:${project.fabric_accessories_compat_file}" // Accessories compatibility
+    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.7-beta.3")))
 
     // Artifacts and relics for curios testing
-    modCompileOnly "maven.modrinth:${project.fabric_artifacts_file}" // Artifacts
-    modCompileOnly "maven.modrinth:${project.fabric_architecture_file}" // Architecture
+    modImplementation "maven.modrinth:${project.fabric_artifacts_file}" // Artifacts
+    modImplementation "maven.modrinth:${project.fabric_architecture_file}" // Architecture
+    modImplementation "be.florens:expandability-fabric:12.0.0"
+    modImplementation "maven.modrinth:K01OU20C:nLsCe2VD" // Cardinal Components API
+    modImplementation "com.electronwill.night-config:toml:3.6.0"
 }
 
 processResources {
