@@ -41,8 +41,9 @@ dependencies {
     
     // First Person Model and dependencies
     modImplementation "maven.modrinth:${project.fabric_not_enough_animations_file}" // Not Enough Animations
-    modCompileOnly "maven.modrinth:${project.fabric_fpm_file}" // First Person Model
+    modCompileOnly "maven.modrinth:${project.fabric_fpm_file}" // First Person Model 2.7.2
     // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
+    // This mod uses JiJ and this is the easy way to deal with it that I found.
 
     // Better Combat and dependencies
     modImplementation "maven.modrinth:${project.fabric_better_combat_file}" // Better Combat
@@ -57,13 +58,9 @@ dependencies {
     modImplementation "maven.modrinth:${project.fabric_combat_roll_file}" // Combat Roll
 
     // Trinkets (Curios equivalent)
-    modCompileOnly "maven.modrinth:${project.fabric_trinkets_file}" // Trinkets
+    modCompileOnly "maven.modrinth:${project.fabric_trinkets_file}" // Trinkets 3.10.0
     // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
-
-    // Sorry, but trinkets ignores the Cardinal Components API (CCA) via modImplementatios, he need to use their own version
-    // of CCA provided in his METAINF folder, the easiest way to fix this is to install the .jar file in your mods folder,
-    // and it will work fine, but if you want to use the mod as a dependency, you need to use the CCA provided by
-    // Trinkets, which is not ideal, but it works.
+    // This mod uses JiJ and this is the easy way to deal with it that I found.
 
     // Accessories
     modImplementation "io.wispforest:owo-lib:${project.owo_lib_version}" // OwO Lib

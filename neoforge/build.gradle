@@ -58,27 +58,38 @@ dependencies {
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 
-    // Player Animation Library
-    modImplementation("maven.modrinth:${project.neoforge_player_animator_file}") // Player Animator
-    implementation("team.unnamed:mocha:${project.mocha_version}") // Required by Player Animator
-    modImplementation("team.unnamed:mocha:${project.mocha_version}")
-
     // Cloth Config
     modApi("maven.modrinth:${project.neoforge_cloth_config_file}")
 
-    // Integrations (compile-only)
-    modCompileOnly("maven.modrinth:${project.neoforge_fpm_file}") // First Person Model
-    modCompileOnly("maven.modrinth:${project.neoforge_better_combat_file}") // Better Combat
-    modCompileOnly("maven.modrinth:${project.neoforge_spell_engine_file}") // Spell Engine
-    
-    // Mixin integrations
-    modCompileOnly("maven.modrinth:${project.neoforge_curios_file}") // Curios
-    modCompileOnly("maven.modrinth:${project.neoforge_artifacts_file}") // Artifacts
-    modCompileOnly("maven.modrinth:${project.neoforge_relics_file}") // Relics
-    
-    // Mixin annotations
-    compileOnly("org.spongepowered:mixin:${project.mixin_version}")
+    // FPM
+    modCompileOnly("maven.modrinth:${project.neoforge_fpm_file}") // First Person Model 2.7.2
+        // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
+        // This mod uses JiJ and this is the easy way to deal with it that I found.
 
+    // Better Combat
+    modImplementation("maven.modrinth:${project.neoforge_player_animator_file}") // Player Animator
+    modImplementation("maven.modrinth:${project.neoforge_better_combat_file}") // Better Combat
+    modImplementation("maven.modrinth:wGKYL7st:FT7t1n1a") // Combat Roll
+
+    // Spell Engine
+//    modImplementation("maven.modrinth:${project.neoforge_spell_engine_file}") // Spell Engine
+
+    // Relics and Artifacts
+    modImplementation("maven.modrinth:${project.neoforge_curios_file}") // Curios
+//    modImplementation("maven.modrinth:jtmvUHXj:Fb55Fgjz") // Accessories
+
+//    modImplementation("maven.modrinth:ccKDOlHs:NMCHU6DZ") // OwO lib
+    modCompileOnly("maven.modrinth:RH2KUdKJ:yVCCi6TK") // Octo lib 0.6.2
+        // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
+        // This mod uses JiJ and this is the easy way to deal with it that I found.
+    modImplementation("maven.modrinth:lhGA9TYQ:ZxYGwlk0") // Architectury API
+    modImplementation("maven.modrinth:EivZOK5a:zcsMz0he") // Tiny Config
+
+    modImplementation("maven.modrinth:${project.neoforge_artifacts_file}") // Artifacts
+    modImplementation("maven.modrinth:${project.neoforge_relics_file}") // Relics
+
+    // Mixins
+    modImplementation("org.spongepowered:mixin:${project.mixin_version}")
 }
 
 processResources {
