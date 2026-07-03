@@ -16,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 /**
  * Specialized Mixin for Artifacts mod to hide specific items like Scarves in first-person view.
  */
-@Mixin(value = GenericArtifactRenderer.class, remap = false)
+@Mixin(value = GenericArtifactRenderer.class)
 public abstract class ArtifactsHiderMixin {
 
     @Shadow

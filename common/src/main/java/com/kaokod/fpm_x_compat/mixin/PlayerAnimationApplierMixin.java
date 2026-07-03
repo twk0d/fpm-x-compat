@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * Mixin for PlayerAnimator's AnimationApplier.
  * Fixes technical offsets related to the sneak (crouch) state during active animations.
  */
-@Mixin(value = AnimationApplier.class, remap = false)
+@Mixin(value = AnimationApplier.class)
 public class PlayerAnimationApplierMixin {
    
    /**

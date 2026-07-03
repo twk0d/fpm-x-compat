@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
+import dev.tr7zw.firstperson.LogicHandler;
 /**
  * Mixin targeting First Person Model's logic handler.
  * Prevents the mod from rotating the player's body during an attack.
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * Note: Pitch visibility overrides were removed to allow FPM to natively 
  * handle head/overlay visibility when looking down, preventing clipping issues.
  */
-@Mixin(targets = "dev.tr7zw.firstperson.LogicHandler", remap = false)
+@Mixin(value = LogicHandler.class, remap = false)
 public class FirstPersonLogicHandlerMixin {
    
    /**

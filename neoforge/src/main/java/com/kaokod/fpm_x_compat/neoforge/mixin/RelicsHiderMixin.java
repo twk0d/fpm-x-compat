@@ -18,7 +18,7 @@ import top.theillusivec4.curios.api.SlotContext;
 /**
  * Specialized Mixin for Relics mod to hide head accessories that use custom renderers.
  */
-@Mixin(value = {PiglinMaskRenderer.class, ChefHatRenderer.class}, remap = false)
+@Mixin(value = {PiglinMaskRenderer.class, ChefHatRenderer.class})
 public class RelicsHiderMixin {
 
     @Inject(

@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.0.0
+
+- **Major Overhaul:** Complete rewrite of the mod to develop with Fabric and Neoforge. The new architecture allows a better development for both versions.
+- **Versioning:** Patronized versioning to follow semantic versioning (MAJOR.MINOR.PATCH).
+
 # 0.1.1
 - **Configurable Accessory Hiding:** Added a new configuration option `ignoredAccessorySlots` in `fpm_bc_compat-client.toml`. Users can now customize which accessory slots (e.g., "head", "hat", "mask") are hidden in first-person mode to prevent camera obstruction.
 - **Universal Curios Integration:** Implemented a source-level hiding mechanism for the **Curios API**. This ensures that all head-related accessories from any Curios-compatible mod are automatically hidden when the first-person body is rendered.

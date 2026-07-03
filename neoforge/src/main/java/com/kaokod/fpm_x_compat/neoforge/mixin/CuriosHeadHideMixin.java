@@ -14,7 +14,7 @@ import top.theillusivec4.curios.common.inventory.CurioStacksHandler;
  * Mixin for CurioStacksHandler to hide all head-related Curios at the source.
  * This is much more stable than targeting render layers with lambdas.
  */
-@Mixin(value = CurioStacksHandler.class, remap = false)
+@Mixin(value = CurioStacksHandler.class)
 public abstract class CuriosHeadHideMixin {
 
     @Shadow

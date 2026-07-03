@@ -11,12 +11,11 @@ public class FpmXCompatMod {
         MOD_LOGGER.info(
         """
         
-        ***************************************************
-                             FPM x Compat
-                          Developed by Kaokod
-                            Hi from Kaokod!
-                         Hyenas are not stinky :3
-        ***************************************************"""
+        *************************=*************************
+                            FPM x Compat
+                           Hi from Kaokod
+                        Hyenas are not stinky!
+        *************************=*************************"""
         );
 
         // Initialize cross-mod compatibility bridges

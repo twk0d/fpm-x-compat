@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  * Specifically redirects the render call to allow skipping items in head-related slots
  * during first-person rendering.
  */
-@Mixin(value = AccessoriesRenderLayer.class, remap = false)
+@Mixin(value = AccessoriesRenderLayer.class)
 public class AccessoriesHeadHideMixin {
 
     /**
