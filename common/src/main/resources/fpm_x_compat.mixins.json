@@ -7,7 +7,8 @@
     "PlayerAnimationProcessorMixin",
     "FirstPersonLogicHandlerMixin",
     "PlayerAnimationApplierMixin",
-    "AccessoriesHeadHideMixin"
+    "AccessoriesHeadHideMixin",
+    "EssentialHeadHideMixin"
   ],
   "injectors": {
     "defaultRequire": 1

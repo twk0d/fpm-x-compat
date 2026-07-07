@@ -12,6 +12,10 @@ import com.kaokod.fpm_x_compat.util.MinecraftPlayerUtil;
 public class CombatRollCompat {
     private static boolean isInitialized = false;
     private static boolean isModAvailable = false;
+    private static final String[][] CLASS_NAME_CANDIDATES = new String[][] {
+            new String[] { "net.combat_roll.internals.RollingEntity", "net.combat_roll.internals.RollManager" },
+            new String[] { "net.combatroll.internals.RollingEntity", "net.combatroll.internals.RollManager" }
+    };
 
     private static Method RESOLVE_ROLL_MANAGER_INSTANCE = null;
     private static Method CHECK_PLAYER_ROLLING_STATE = null;
@@ -20,19 +24,25 @@ public class CombatRollCompat {
         if (isInitialized) return;
         isInitialized = true;
 
-        try {
-            Class<?> rollingEntityClass = Class.forName("net.combatroll.internals.RollingEntity");
-            RESOLVE_ROLL_MANAGER_INSTANCE = rollingEntityClass.getMethod("getRollManager");
+        for (String[] classNames : CLASS_NAME_CANDIDATES) {
+            try {
+                Class<?> rollingEntityClass = Class.forName(classNames[0]);
+                RESOLVE_ROLL_MANAGER_INSTANCE = rollingEntityClass.getMethod("getRollManager");
 
-            Class<?> rollManagerClass = Class.forName("net.combatroll.internals.RollManager");
-            CHECK_PLAYER_ROLLING_STATE = rollManagerClass.getMethod("isRolling");
+                Class<?> rollManagerClass = Class.forName(classNames[1]);
+                CHECK_PLAYER_ROLLING_STATE = rollManagerClass.getMethod("isRolling");
 
-            isModAvailable = true;
-            FpmXCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll integration established.");
-        } catch (Exception e) {
-            isModAvailable = false;
-            FpmXCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll not detected, skipping integration.");
+                isModAvailable = true;
+                FpmXCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll integration established.");
+                return;
+            } catch (Exception ignored) {
+                RESOLVE_ROLL_MANAGER_INSTANCE = null;
+                CHECK_PLAYER_ROLLING_STATE = null;
+            }
         }
+
+        isModAvailable = false;
+        FpmXCompatMod.MOD_LOGGER.info("[Bridge] Combat Roll not detected, skipping integration.");
     }
 
     private static void initializeReflection() {

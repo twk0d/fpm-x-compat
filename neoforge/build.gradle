@@ -88,6 +88,9 @@ dependencies {
     modImplementation("maven.modrinth:${project.neoforge_artifacts_file}") // Artifacts
     modImplementation("maven.modrinth:${project.neoforge_relics_file}") // Relics
 
+//    // Essential mod
+//    modImplementation("maven.modrinth:k2ZPuTBm:iwh7HMa5")
+
     // Mixins
     modImplementation("org.spongepowered:mixin:${project.mixin_version}")
 }

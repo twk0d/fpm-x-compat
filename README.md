@@ -27,6 +27,8 @@ This mod acts as a technical bridge, harmonizing interactions between several ma
 *   **[Accessories](https://modrinth.com/mod/accessories) & [Curios API](https://modrinth.com/mod/curios)**
     *   **Universal Slot Hiding:** Automatically hides head-related accessory slots (Head, Hat, Face, etc.) in first-person  while showing your accessories to other players.
     *   **Configurable Filter:** Includes an `ignoredAccessorySlots` option to allow users to customize which equipment slots are hidden in first person.
+*   **[Essential](https://modrinth.com/mod/essential)**
+    *   **Cosmetic Head Hiding:** Hides head-related Essential cosmetics in first-person when FPM renders the local player's body, while keeping them visible in third-person and for other players.
 *   **[Relics](https://modrinth.com/mod/relics-mod)**
     *   **Custom Renderer Support:** Specific fixes for Relics items that use unique rendering systems, such as the **Piglin Mask** and **Chef's Hat**, ensuring they don't block the player's vision.
 *   **[Artifacts](https://modrinth.com/mod/artifacts)**

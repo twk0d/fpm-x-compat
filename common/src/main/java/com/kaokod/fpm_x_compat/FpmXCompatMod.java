@@ -20,10 +20,8 @@ public class FpmXCompatMod {
 
         // Initialize cross-mod compatibility bridges
         MOD_LOGGER.info("[Lifecycle] Initializing compatibility bridges...");
-        com.kaokod.fpm_x_compat.integration.BetterCombatCompat.init();
-        com.kaokod.fpm_x_compat.integration.SpellEngineCompat.init();
-        com.kaokod.fpm_x_compat.integration.CombatRollCompat.init();
-        com.kaokod.fpm_x_compat.integration.FirstPersonModelCompat.init();
+        com.kaokod.fpm_x_compat.integration.CompatibilityRegistry.initRuntimeBridges();
+        com.kaokod.fpm_x_compat.integration.CompatibilityRegistry.logMixinOnlyIntegrations();
         MOD_LOGGER.info("[Lifecycle] Mod initialization sequence complete.");
     }
 }

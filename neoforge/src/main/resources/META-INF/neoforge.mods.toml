@@ -86,6 +86,14 @@ ordering = "AFTER"
 side = "CLIENT"
 reason = "Optional integration to hide head accessories in first-person."
 
+[[dependencies.fpm_x_compat]]
+modId = "essential"
+type = "optional"
+versionRange = "${mod_wildcard_version}"
+ordering = "AFTER"
+side = "CLIENT"
+reason = "Optional integration to hide Essential cosmetics in first-person."
+
 [[mixins]]
 config = "fpm_x_compat.mixins.json"
 

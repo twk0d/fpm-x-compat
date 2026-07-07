@@ -1,5 +1,13 @@
 # Changelog
 
+# 1.1.0
+
+- **Essential Compatibility:** Added optional integration for **Essential** cosmetics on both Fabric and NeoForge.
+- **First-Person Cosmetic Hiding:** Essential head-related cosmetic slots now respect `ignoredAccessorySlots`, hiding them only while FPM renders the local player's body in first person.
+- **Integration Registry:** Centralized runtime bridge initialization and optional mixin detection in a shared `CompatibilityRegistry`, so startup diagnostics and mixin gating now use the same source of truth.
+- **Detection Fixes:** Corrected Combat Roll package detection for current versions and improved optional mixin detection for loader-specific integrations and Essential's staged loader.
+- **Mixin Stability:** Moved the Essential integration to the common mixin config with an optional `@Pseudo` target and `remap = false`, avoiding hard runtime/build dependencies when Essential is not installed.
+
 # 1.0.0
 
 - **Major Overhaul:** Complete rewrite of the mod to develop with Fabric and Neoforge. The new architecture allows a better development for both versions.
