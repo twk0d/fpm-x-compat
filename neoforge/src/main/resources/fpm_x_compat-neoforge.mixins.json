@@ -5,8 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "CuriosHeadHideMixin",
-    "RelicsHiderMixin",
-    "ArtifactsHiderMixin"
+    "RelicsHiderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

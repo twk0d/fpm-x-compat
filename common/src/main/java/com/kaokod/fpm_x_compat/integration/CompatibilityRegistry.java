@@ -34,9 +34,9 @@ public final class CompatibilityRegistry {
             ),
             new MixinIntegration(
                     "Artifacts",
-                    LoaderScope.NEOFORGE,
+                    LoaderScope.ANY,
                     new String[] { "artifacts" },
-                    new String[] { "com.kaokod.fpm_x_compat.neoforge.mixin.ArtifactsHiderMixin" },
+                    new String[] { "com.kaokod.fpm_x_compat.mixin.ArtifactsHiderMixin" },
                     new String[] { "artifacts.client.item.renderer.GenericArtifactRenderer" },
                     true,
                     false

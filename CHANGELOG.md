@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.1.1
+
+- **Artifacts Fabric Support:** Moved the Artifacts scarf-hiding integration to common code so it can run on both Fabric and NeoForge.
+
 # 1.1.0
 
 - **Essential Compatibility:** Added optional integration for **Essential** cosmetics on both Fabric and NeoForge.

@@ -8,6 +8,7 @@
     "FirstPersonLogicHandlerMixin",
     "PlayerAnimationApplierMixin",
     "AccessoriesHeadHideMixin",
+    "ArtifactsHiderMixin",
     "EssentialHeadHideMixin"
   ],
   "injectors": {
