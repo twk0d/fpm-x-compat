@@ -1,5 +1,13 @@
 # Changelog
 
+# 1.2.0
+
+- **Punchy Compatibility:** Added optional integration for **Punchy** on Fabric and NeoForge.
+- **First Person Model Priority:** When Punchy is disabled, its FPM activation handler no longer blocks First Person Model body rendering.
+- **Animation State Restoration:** Restores Better Combat and Spell Engine first-person animation state after Punchy is disabled, preventing Punchy's already-registered hooks from keeping external animation mods suppressed.
+- **FPM Hide Angle Support:** When Punchy's FPM hide angle is set to `never`, Punchy is virtually disabled through its `isModEnabled` boolean while in first person, letting FPM and Better Combat animation handling keep priority.
+- **Mixin Safety:** Punchy mixins are gated through `CompatibilityRegistry`, use optional `@Pseudo` targets with `remap = false`, and avoid fragile Minecraft descriptors in injection annotations.
+
 # 1.1.1
 
 - **Artifacts Fabric Support:** Moved the Artifacts scarf-hiding integration to common code so it can run on both Fabric and NeoForge.

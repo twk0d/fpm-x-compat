@@ -68,6 +68,21 @@ public final class CompatibilityRegistry {
                     true
             ),
             new MixinIntegration(
+                    "Punchy",
+                    LoaderScope.ANY,
+                    new String[] { "punchy" },
+                    new String[] {
+                            "com.kaokod.fpm_x_compat.mixin.PunchyConfigMixin",
+                            "com.kaokod.fpm_x_compat.mixin.PunchyFirstPersonModelCompatMixin"
+                    },
+                    new String[] {
+                            "punchy.config.PunchyConfig",
+                            "punchy.compat.FirstPersonModelCompat"
+                    },
+                    true,
+                    false
+            ),
+            new MixinIntegration(
                     "Player Animator",
                     LoaderScope.ANY,
                     new String[] { "playeranimator" },

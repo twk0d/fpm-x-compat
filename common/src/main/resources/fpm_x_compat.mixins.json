@@ -9,7 +9,9 @@
     "PlayerAnimationApplierMixin",
     "AccessoriesHeadHideMixin",
     "ArtifactsHiderMixin",
-    "EssentialHeadHideMixin"
+    "EssentialHeadHideMixin",
+    "PunchyConfigMixin",
+    "PunchyFirstPersonModelCompatMixin"
   ],
   "injectors": {
     "defaultRequire": 1
