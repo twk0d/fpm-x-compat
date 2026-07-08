@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.2.1
+
+- **Updated Dependencies:** Mods like better combat are optional now and the mod will not crash if they are not installed.
+
 # 1.2.0
 
 - **Punchy Compatibility:** Added optional integration for **Punchy** on Fabric and NeoForge.
