@@ -53,9 +53,14 @@ Contributions are highly welcome! Whether it's a bug fix, a new mod integration,
 *   Git
 
 ### Setting up the Workspace
-1.  Clone the repository: `git clone https://github.com/twk0d/firstpersonmodel-bettercombat-compat.git`
+1.  Clone the repository: `git clone https://github.com/twk0d/fpm-x-compat`
 2.  Import the project into your preferred IDE (IntelliJ IDEA or VS Code) as a Gradle project.
-3.  Dependencies (Better Combat, FPM, etc.) are handled automatically via Maven repositories (Modrinth, KosmX, Shedaniel).
+3.  Dependencies (Better Combat, FPM, etc.) are handled automatically via Maven repositories.
+
+### Runtime Testing Notes
+Some optional integration targets must be installed manually in the `mods` folder for the Minecraft version and loader you are testing (Check `{loader}/build.gradle`). This is mainly because a few mods use Jar-in-Jar or loader-specific bootstrap behavior, and their nested runtime classes may not be exposed reliably through the Gradle dev runtime alone.
+
+This is intentional: keeping those jars as manually installed runtime mods reduces false integration issues and makes local testing closer to a real launcher setup. Use the correct Fabric or NeoForge jar for the version you are testing, and place it in that instance's `mods` folder before running client tests.
 
 ### Building the Mod
 To generate the final mod JAR, run:
