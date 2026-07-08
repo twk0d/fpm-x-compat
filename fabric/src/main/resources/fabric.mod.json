@@ -3,7 +3,7 @@
   "id": "fpm_x_compat",
   "version": "${version}",
   "name": "${mod_name}",
-  "description": "Technical compatibility fix for First Person Model, Better Combat, Spell Engine, and Combat Roll.",
+  "description": "Fix First-Person Model mod issues when using mods like Better Combat, Curios, accessories, and more!",
   "authors": [
     "Kaokod"
   ],
@@ -24,8 +24,7 @@
     "minecraft": ">=${minecraft_version}",
     "java": ">=21",
     "fabric-api": "*",
-    "cloth-config": "*",
-    "bettercombat": "*"
+    "cloth-config": "*"
   },
   "suggests": {
     "spell_engine": "*",
@@ -33,6 +32,7 @@
     "combatroll": "*",
     "firstperson": "*",
     "accessories": "*",
-    "essential": "*"
+    "essential": "*",
+    "bettercombat": "*"
   }
 }

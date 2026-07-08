@@ -10,8 +10,7 @@ version = "${mod_version}"
 displayName = "${mod_name}"
 authors = "Kaokod"
 description = '''
-Technical compatibility fix for First Person Model, Better Combat, Spell Engine, and Combat Roll.
-Dynamically aligns arm rendering with camera pitch for a seamless combat experience.
+Fix First-Person Model mod issues when using mods like Better Combat, Curios, accessories, and more!
 '''
 
 
@@ -32,7 +31,7 @@ side = "BOTH"
 
 [[dependencies.fpm_x_compat]]
 modId = "playeranimator"
-type = "required"
+type = "optional"
 versionRange = "${mod_wildcard_version}"
 ordering = "AFTER"
 side = "CLIENT"
@@ -56,7 +55,7 @@ reason = "Primary mod for first-person body rendering. The core of this compatib
 
 [[dependencies.fpm_x_compat]]
 modId = "bettercombat"
-type = "required"
+type = "optional"
 versionRange = "${mod_wildcard_version}"
 ordering = "AFTER"
 side = "CLIENT"
