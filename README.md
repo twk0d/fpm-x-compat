@@ -22,6 +22,9 @@ This mod acts as a technical bridge, harmonizing interactions between several ma
     *   **Casting Synchronization:** Extends kinematic fixes to spell-casting poses, ensuring your hands and staves point where you look.
 *   **[Combat Roll](https://modrinth.com/mod/combat-roll)**
     *   **Movement Stabilization:** Smooths out body rendering during rolls to prevent camera clipping and jitter.
+*   **[Punchy](https://modrinth.com/mod/punchy-fpa)**
+    *   **First Person Model Priority:** Prevents Punchy's FPM integration from blocking First Person Model body rendering when Punchy is disabled or when its FPM hide angle is set to `never`.
+    *   **Animation State Restoration:** Restores Better Combat and Spell Engine first-person animation settings after Punchy's runtime hooks disable them.
 
 ### 🎒 Accessories & Equipment
 *   **[Accessories](https://modrinth.com/mod/accessories) & [Curios API](https://modrinth.com/mod/curios)**
@@ -36,22 +39,6 @@ This mod acts as a technical bridge, harmonizing interactions between several ma
 
 ## 💡 Compatibility Recommendations
 If you are experiencing animation conflicts when using **Better Combat** alongside **EMF**-based texture packs (like *Fresh Animations* or *Fresh Moves*), we strongly recommend installing the **[Entity Player Compat](https://www.curseforge.com/minecraft/mc-mods/entity-player-compat)** mod. This bridge mod effectively synchronizes animation states, preventing the visual "glitching" or "stuttering" of caused by conflicting animation systems.
-
-## Key Features
-*   **Kinematic Alignment:** Automatically syncs arm rotation with camera pitch during attacks.
-*   **Intelligent Head Hiding:** Dynamically hides the local player's head and accessories in first-person while maintaining full visibility for other players.
-*   **Dynamic Configuration:** Real-time adjustment of offsets via an in-game menu (Powered by Cloth Config).
-
----
-
-## 🛠 Project Roadmap & Planning
-
-| Priority   | Task                                                     | Status              |
-|:-----------|:---------------------------------------------------------|:--------------------|
-| **High**   | Multi-language support (I18n)                            | ⏳ To Do             |
-| **Medium** | Fabric and NeoForge multiloader build                    | ✅ Implemented      |
-| **Low**    | Custom animation profiles per weapon type                | 💡 Planned          |
-| **Low**    | Portability to other versions                            | 💡 Planned          |
 
 ---
 
