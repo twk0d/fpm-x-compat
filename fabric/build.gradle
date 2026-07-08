@@ -74,6 +74,11 @@ dependencies {
     modImplementation "be.florens:expandability-fabric:${project.expandability_version}"
     modImplementation "maven.modrinth:${project.fabric_cardinal_components_file}" // Cardinal Components API
     modImplementation "com.electronwill.night-config:toml:${project.night_config_version}"
+
+    //    modImplementation("maven.modrinth:${project.fabric_essential_file}")  // Essential mod
+    // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
+    // This mod just don't work with modrinth maven :c
+    modImplementation("maven.modrinth:${project.fabric_punchy_file}")  // Punchy
 }
 
 processResources {

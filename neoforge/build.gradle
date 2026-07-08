@@ -58,38 +58,47 @@ dependencies {
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 
-    // Cloth Config
+    // Common Integrations (NeoForge versions)
     modApi("maven.modrinth:${project.neoforge_cloth_config_file}")
 
-    // FPM
+    // First Person Model and dependencies
     modCompileOnly("maven.modrinth:${project.neoforge_fpm_file}") // First Person Model 2.7.2
-        // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
-        // This mod uses JiJ and this is the easy way to deal with it that I found.
+    // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
+    // This mod uses JiJ and this is the easy way to deal with it that I found.
 
-    // Better Combat
-    modImplementation("maven.modrinth:${project.neoforge_player_animator_file}") // Player Animator
+    // Better Combat and dependencies
     modImplementation("maven.modrinth:${project.neoforge_better_combat_file}") // Better Combat
-    modImplementation("maven.modrinth:wGKYL7st:FT7t1n1a") // Combat Roll
+    modImplementation("maven.modrinth:${project.neoforge_player_animator_file}") // Player Animator
 
     // Spell Engine
-//    modImplementation("maven.modrinth:${project.neoforge_spell_engine_file}") // Spell Engine
+    //    modImplementation("maven.modrinth:${project.neoforge_spell_engine_file}") // Spell Engine
 
-    // Relics and Artifacts
+    // Combat Roll
+    modImplementation("maven.modrinth:${project.neoforge_combat_roll_file}") // Combat Roll
+
+    // Curios
     modImplementation("maven.modrinth:${project.neoforge_curios_file}") // Curios
-//    modImplementation("maven.modrinth:jtmvUHXj:Fb55Fgjz") // Accessories
 
-//    modImplementation("maven.modrinth:ccKDOlHs:NMCHU6DZ") // OwO lib
-    modCompileOnly("maven.modrinth:RH2KUdKJ:yVCCi6TK") // Octo lib 0.6.2
-        // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
-        // This mod uses JiJ and this is the easy way to deal with it that I found.
-    modImplementation("maven.modrinth:lhGA9TYQ:ZxYGwlk0") // Architectury API
-    modImplementation("maven.modrinth:EivZOK5a:zcsMz0he") // Tiny Config
+    // Accessories
+    //    modImplementation("maven.modrinth:jtmvUHXj:Fb55Fgjz") // Accessories
+    //    modImplementation("maven.modrinth:ccKDOlHs:NMCHU6DZ") // OwO lib
+    modCompileOnly("maven.modrinth:${project.neoforge_octo_lib_file}") // Octo lib 0.6.2
+    // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
+    // This mod uses JiJ and this is the easy way to deal with it that I found.
 
+    // Artifacts and relics for curios testing
     modImplementation("maven.modrinth:${project.neoforge_artifacts_file}") // Artifacts
+    modImplementation("maven.modrinth:${project.neoforge_architecture_file}") // Architecture
+    modImplementation("maven.modrinth:${project.neoforge_tiny_config_file}") // Tiny Config
     modImplementation("maven.modrinth:${project.neoforge_relics_file}") // Relics
 
-//    // Essential mod
-//    modImplementation("maven.modrinth:k2ZPuTBm:iwh7HMa5")
+    // Essential
+    //    modImplementation("maven.modrinth:${project.neoforge_essential_file}")  // Essential mod
+    // IMPORTANT: YOU SHOULD INSTALL .JAR FILE MANUALLY IN YOUR MODS FOLDER FOR TESTING, OTHERWISE THE MOD WILL NOT LOAD
+    // This mod just don't work with modrinth maven :c
+
+    // Punchy
+    modImplementation("maven.modrinth:${project.neoforge_punchy_file}") // Punchy
 
     // Mixins
     modImplementation("org.spongepowered:mixin:${project.mixin_version}")
