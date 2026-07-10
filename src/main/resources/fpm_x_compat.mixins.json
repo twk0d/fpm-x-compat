@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.kaokod.fpm_x_compat.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "PlayerAnimationProcessorMixin",
+    "FirstPersonLogicHandlerMixin",
+    "PlayerAnimationApplierMixin",
+    "CuriosHeadHideMixin",
+    "ArtifactsHiderMixin",
+    "RelicsCurioRendererMixin",
+    "PunchyConfigMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "plugin": "com.kaokod.fpm_x_compat.mixin.FpmXCompatMixinPlugin"
+}

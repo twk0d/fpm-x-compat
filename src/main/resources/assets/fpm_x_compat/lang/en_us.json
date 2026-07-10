@@ -1,0 +1,57 @@
+{
+  "fpm_bc_compat.config.title": "First Person Model x Better Combat Fix",
+  
+  "fpm_bc_compat.config.category.general": "General Settings",
+  "fpm_bc_compat.config.category.right_arm": "Right Arm Alignment",
+  "fpm_bc_compat.config.category.left_arm": "Left Arm Alignment",
+
+  "fpm_bc_compat.config.header.rotation": "Rotation & Kinematics",
+  "fpm_bc_compat.config.header.position": "Physical Offsets",
+
+  "fpm_bc_compat.config.body_y_offset": "Body Y Offset (Sneak)",
+  "fpm_bc_compat.config.body_y_offset.tooltip": "Adjusts the vertical body position when crouching to align with FPM.",
+
+  "fpm_bc_compat.config.transition_speed": "Bias Transition Speed",
+  "fpm_bc_compat.config.transition_speed.tooltip": "How fast the arm smooths between upper and lower look states. Smaller is slower.",
+
+  "fpm_bc_compat.config.pitch_multiplier": "Camera Pitch Multiplier",
+  "fpm_bc_compat.config.pitch_multiplier.tooltip": "Factor applied to camera angle. Higher values make the arm follow the look angle more aggressively.",
+
+  "fpm_bc_compat.config.pitch_offset": "Base Pitch Offset",
+  
+  "fpm_bc_compat.config.upper_bias": "Look UP Extra Bias",
+  "fpm_bc_compat.config.upper_bias.tooltip": "Additional rotation applied ONLY when looking at the sky. Smooths automatically.",
+
+  "fpm_bc_compat.config.lower_bias": "Look DOWN Extra Bias",
+  "fpm_bc_compat.config.lower_bias.tooltip": "Additional rotation applied ONLY when looking at the ground. Smooths automatically.",
+
+  "fpm_bc_compat.config.curve_correction": "Trigonometric Curve",
+  "fpm_bc_compat.config.curve_correction.tooltip": "Prevents the arm from 'running away' from the crosshair at steep angles. Higher values slow down rotation at poles.",
+
+  "fpm_bc_compat.config.curve_floor": "Curvature Safety Floor",
+  "fpm_bc_compat.config.curve_floor.tooltip": "Ensures the weapon remains visible even at 90 degrees. 0.15 = 15% minimum rotation strength.",
+
+  "fpm_bc_compat.config.pos_x": "Horizontal Offset (X)",
+  "fpm_bc_compat.config.pos_y": "Vertical Offset (Y)",
+  "fpm_bc_compat.config.pos_z": "Depth Offset (Z)",
+  "fpm_bc_compat.config.lookup_z_shift": "Look UP Dynamic Z-Shift",
+  "fpm_bc_compat.config.lookup_z_shift.tooltip": "Automatically pushes the arm forward when looking up to prevent camera clipping. Default 3.1 ensures full visibility at -90 degrees.",
+
+  "fpm_x_compat.config.title": "FPM x Compat",
+  "fpm_x_compat.config.category.global": "Global",
+  "fpm_x_compat.config.category.right_arm": "Right Arm",
+  "fpm_x_compat.config.category.left_arm": "Left Arm",
+  "fpm_x_compat.config.body_y_offset": "Body Y Offset",
+  "fpm_x_compat.config.bias_smoothing_speed": "Bias Smoothing Speed",
+  "fpm_x_compat.config.ignored_accessory_slots": "Ignored Accessory Slots",
+  "fpm_x_compat.config.pitch_multiplier": "Pitch Multiplier",
+  "fpm_x_compat.config.pitch_offset": "Pitch Offset",
+  "fpm_x_compat.config.pitch_curve": "Pitch Curve",
+  "fpm_x_compat.config.pitch_curve_floor": "Pitch Curve Floor",
+  "fpm_x_compat.config.upper_pitch_bias": "Upper Pitch Bias",
+  "fpm_x_compat.config.lower_pitch_bias": "Lower Pitch Bias",
+  "fpm_x_compat.config.position_x_offset": "Position X Offset",
+  "fpm_x_compat.config.position_y_offset": "Position Y Offset",
+  "fpm_x_compat.config.position_z_offset": "Position Z Offset",
+  "fpm_x_compat.config.look_up_z_shift": "Look Up Z Shift"
+}

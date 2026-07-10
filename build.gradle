@@ -1,84 +1,123 @@
-plugins {
-    id 'dev.architectury.loom' version '1.9-SNAPSHOT' apply false
-    id 'architectury-plugin' version '3.4-SNAPSHOT'
-    id 'com.gradleup.shadow' version '8.3.6' apply false
-}
-
-architectury {
-    minecraft = project.minecraft_version
-}
-
-allprojects {
-    group = rootProject.mod_group_id
-    version = rootProject.mod_version
-}
-
-subprojects {
-    apply plugin: 'dev.architectury.loom'
-    apply plugin: 'architectury-plugin'
-    apply plugin: 'maven-publish'
-
-    base {
-        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
-        archivesName = "$rootProject.archives_name-$project.name"
-    }
-    version = rootProject.mod_version + "+${rootProject.minecraft_version}"
-
+buildscript {
     repositories {
-        maven {
-            name = "Modrinth"
-            url = "https://api.modrinth.com/maven"
-            content {
-                includeGroup "maven.modrinth"
-            }
-        }
-        maven {
-            name = "KosmX"
-            url = "https://maven.kosmx.dev/"
-        }
-        maven {
-            name = "Shedaniel"
-            url = "https://maven.shedaniel.me/"
-        }
-        maven {
-            name = "Wispforest"
-            url = "https://maven.wispforest.io/releases"
-        }
-        maven {
-            name = "SpongePowered"
-            url = "https://repo.spongepowered.org/repository/maven-public/"
-        }
-        maven {
-            name "reposiliteRepository"
-            url "https://maven.florens.be/releases"
-        }
-        maven {
-            name "Bawnorton repository"
-            url = "https://maven.bawnorton.com/releases"
-        }
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+        gradlePluginPortal()
     }
-
     dependencies {
-        minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
-        mappings loom.officialMojangMappings()
+        classpath 'net.minecraftforge.gradle:ForgeGradle:6.0.26'
     }
+}
 
-    java {
-        withSourcesJar()
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+}
 
-    tasks.withType(JavaCompile).configureEach {
-        it.options.release = 21
-    }
+apply plugin: 'net.minecraftforge.gradle'
 
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                artifactId = base.archivesName.get()
-                from components.java
+group = mod_group_id
+version = "${mod_version}+${minecraft_version}"
+
+base {
+    archivesName = archives_name
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+    withSourcesJar()
+}
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+    copyIdeResources = true
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                fpm_x_compat {
+                    source sourceSets.main
+                }
             }
         }
+    }
+}
+
+repositories {
+    maven { url = 'https://maven.minecraftforge.net' }
+    mavenCentral()
+    maven {
+        name = 'KosmX'
+        url = 'https://maven.kosmx.dev/'
+    }
+    maven {
+        name = 'Shedaniel'
+        url = 'https://maven.shedaniel.me/'
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    compileOnly 'org.spongepowered:mixin:0.8.5'
+    compileOnly 'org.ow2.asm:asm-tree:9.5'
+    compileOnly 'me.shedaniel.cloth:cloth-config-forge:11.1.136'
+
+    compileOnly files(
+            'decompiled/forge-1.20.1/bettercombat-forge-1.9.0+1.20.1.jar',
+            'decompiled/forge-1.20.1/combatroll-forge-1.3.3+1.20.1.jar',
+            'decompiled/forge-1.20.1/curios-forge-5.14.1+1.20.1.jar',
+            'decompiled/forge-1.20.1/artifacts-forge-9.5.19.jar',
+            'decompiled/forge-1.20.1/firstperson-forge-2.7.2-mc1.20.1.jar',
+            'decompiled/forge-1.20.1/player-animation-lib-forge-1.0.2-rc1+1.20.jar',
+            'decompiled/forge-1.20.1/punchy-2.6.1-forge-1.20.1.jar',
+            'decompiled/forge-1.20.1/relics-1.20.1-0.8.0.13.jar'
+    )
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    inputs.property 'mod_id', mod_id
+    inputs.property 'mod_name', mod_name
+    inputs.property 'mod_license', mod_license
+    inputs.property 'mod_version', mod_version
+    inputs.property 'minecraft_version_range', minecraft_version_range
+    inputs.property 'forge_version_range', forge_version_range
+    inputs.property 'loader_version_range', loader_version_range
+
+    filesMatching('META-INF/mods.toml') {
+        expand(
+                mod_id: mod_id,
+                mod_name: mod_name,
+                mod_license: mod_license,
+                mod_version: mod_version,
+                minecraft_version_range: minecraft_version_range,
+                forge_version_range: forge_version_range,
+                loader_version_range: loader_version_range
+        )
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+jar {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : 'kaokod',
+                'Specification-Version'   : '1',
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : 'kaokod',
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'MixinConfigs'            : 'fpm_x_compat.mixins.json'
+        ])
     }
 }
