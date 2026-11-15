@@ -69,7 +69,7 @@ public class AccessoriesHeadHideMixin {
                     }
                 }
                 
-                FpmXCompatMod.MOD_LOGGER.info("Accessory in slot: " + slotName + ", Ignored: " + isIgnored);
+                //FpmXCompatMod.MOD_LOGGER.info("Accessory in slot: " + slotName + ", Ignored: " + isIgnored);
 
                 if (isIgnored) {
                     return; // Skip rendering for this specific accessory
